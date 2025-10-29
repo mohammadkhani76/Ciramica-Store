@@ -1,0 +1,66 @@
+.services-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  padding-block: 40px;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.services-item {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-16);
+  width: 25%;
+  & h4 {
+    letter-spacing: 1px;
+  }
+}
+.services-item-icon {
+  width: 74px;
+  height: 74px;
+  background-color: var(--color-15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  & svg {
+    width: 40px;
+    height: 40px;
+    fill: var(--color-10);
+    transition: fill 0.3s ease;
+  }
+}
+.services-item-icon:hover {
+  background-color: var(--color-2);
+  & svg {
+    fill: var(--color-1);
+  }
+}
+
+.services-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.services-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+@media screen and (max-width: 768px) {
+  .services-wrapper {
+    justify-content: flex-start; /* از چپ شروع بشه */
+    padding-inline: 10px; /* کمی فاصله از چپ و راست */
+  }
+  .services-item {
+    flex: 0 0 250px;
+    scroll-snap-align: start;
+  }
+}

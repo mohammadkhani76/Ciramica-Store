@@ -1,0 +1,125 @@
+.blog-wrapper {
+  width: 100%;
+  background-color: cadetblue;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-block: 10px;
+}
+.blog-wrapper > h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.blog-wrapper {
+  width: 100%;
+  padding-block: 40px;
+  background-color: #f9f9f9;
+}
+
+.blog-item {
+  background: white;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  & h2 {
+    font-size: 18px;
+    font-weight: 600;
+    padding-inline: 15px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  & h2:hover {
+    color: var(--color-2);
+  }
+  & p {
+    font-size: 15px;
+    color: var(--color-11);
+    padding-inline: 15px;
+  }
+}
+
+.blog-img img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+/* .blog-img img:hover {
+  transform: scale(1.1);
+} */
+.blog-item:hover .blog-img img {
+  transform: scale(1.1);
+}
+.blog-info {
+  font-size: 14px;
+  color: var(--color-12);
+  padding-inline: 15px;
+}
+
+.blog-item .blog-link {
+  color: var(--color-10);
+  text-decoration: none;
+  font-weight: 500;
+  padding-inline: 15px;
+  transition: color 0.3s ease;
+}
+
+.blog-link:hover {
+  color: var(--color-2);
+}
+.blog-swiper {
+  width: 100%;
+  height: auto; /* یا یک مقدار مشخص مثل 400px */
+}
+
+/* حذف فلش‌های پیش‌فرض Swiper */
+.blog-swiper .swiper-button-prev::after,
+.blog-swiper .swiper-button-next::after {
+  content: "";
+}
+
+/* دکمه‌ها */
+.blog-swiper .swiper-button-prev,
+.blog-swiper .swiper-button-next {
+  background-color: var(--color-14);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-10);
+  transition: all 0.3s ease;
+}
+
+/* هاور */
+.blog-swiper .swiper-button-prev:hover,
+.blog-swiper .swiper-button-next:hover {
+  background-color: var(--color-2);
+  color: var(--color-1);
+  transform: scale(1.1);
+}
+
+/* کلیک */
+.blog-swiper .swiper-button-prev:active,
+.blog-swiper .swiper-button-next:active {
+  background-color: var(--color-2);
+  transform: scale(0.95);
+}
+
+/* آیکن‌های سفارشی داخل دکمه‌ها */
+.blog-swiper .swiper-button-prev svg,
+.blog-swiper .swiper-button-next svg {
+  color: var(--color-10);
+  transition: color 0.3s ease;
+}
+
+/* تغییر رنگ آیکن هنگام هاور یا کلیک */
+.blog-swiper .swiper-button-prev:hover svg,
+.blog-swiper .swiper-button-next:hover svg,
+.blog-swiper .swiper-button-prev:active svg,
+.blog-swiper .swiper-button-next:active svg {
+  color: var(--color-1);
+}

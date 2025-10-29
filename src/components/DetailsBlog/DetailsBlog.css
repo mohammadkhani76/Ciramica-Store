@@ -1,0 +1,26 @@
+.details-blog-wrapper {
+  /* background-color: brown; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-block: 20px;
+  justify-content: center;
+  & p {
+    color: var(--color-6);
+    line-height: 2;
+    text-align: justify;
+  }
+  & span {
+    color: var(--color-6);
+  }
+}
+.details-blog-img {
+  width: 100%;
+  height: auto;
+}
+.details-blog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 2/1;
+}

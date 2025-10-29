@@ -1,0 +1,20 @@
+export const SvgX = ({ className }) => {
+  return (
+    <>
+      <svg
+        className={className}
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        class="base-svg-icon base-twitter-x-svg"
+        fill="currentColor"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        width="23"
+        height="24"
+        viewBox="0 0 23 24"
+      >
+        <title>X</title>
+        <path d="M13.969 10.157l8.738-10.157h-2.071l-7.587 8.819-6.060-8.819h-6.989l9.164 13.336-9.164 10.651h2.071l8.012-9.313 6.4 9.313h6.989l-9.503-13.831zM11.133 13.454l-8.316-11.895h3.181l14.64 20.941h-3.181l-6.324-9.046z"></path>
+      </svg>
+    </>
+  );
+};

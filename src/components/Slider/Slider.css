@@ -1,0 +1,124 @@
+.header-bottom-slider {
+  width: 100vw;
+  position: relative;
+  z-index: 0;
+}
+
+.swiper-slide {
+  width: 100%;
+  height: auto; /* یا یک مقدار مشخص مثل 400px */
+}
+
+.slide-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  width: 100%;
+  height: 100%;
+}
+.slide-swiper .swiper-button-next,
+.slide-swiper .swiper-button-prev {
+  color: var(--color-6);
+  width: 40px;
+  height: 40px;
+}
+.slide-swiper .swiper-pagination-bullet-active {
+  background-color: var(--color-6);
+}
+.slide-swiper .swiper-button-next {
+  right: 20px !important;
+}
+
+.slide-swiper .swiper-button-prev {
+  left: 20px !important;
+}
+.slide-swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* slider details */
+.slider-details {
+  position: absolute;
+  /* top: 50%; */
+  transform: translateY(-50%);
+  padding: 20px 30px;
+  z-index: 20;
+  left: 57%;
+  color: var(--color-16);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: scale-up-top 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  gap: 20px;
+  width: 50%;
+
+  & p {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+  & h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+  }
+}
+@keyframes scale-up-top {
+  0% {
+    transform: scale(0.5);
+    transform-origin: 50% 0;
+  }
+  100% {
+    transform: scale(1);
+    transform-origin: 50% 0;
+  }
+}
+.slider-details button {
+  border: none;
+  background-color: var(--color-2);
+  text-align: center;
+  padding: 8px 18px;
+  color: var(--color-1);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-6);
+  }
+}
+@media screen and (max-width: 900px) {
+  .swiper-button-next {
+    right: 10px !important;
+  }
+
+  .swiper-button-prev {
+    left: 10px !important;
+  }
+  .slider-details {
+    gap: 5px;
+    width: 90%;
+    left: 53%;
+    padding: 10px;
+
+    & p {
+      font-size: 0.5rem;
+    }
+    & h2 {
+      font-size: 0.9rem;
+    }
+  }
+  .slider-details button {
+    padding: 3px 9px;
+    font-size: 0.7rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .slide-swiper .swiper-button-next,
+  .slide-swiper .swiper-button-prev {
+    display: none;
+  }
+  .slider-details {
+    left: 50%;
+  }
+}

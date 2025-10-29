@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(./assets/font/Roboto-Bold_1.woff),
+    url(./assets/font/Roboto-Bold_1.woff), url(./assets/font/Roboto-Bold.woff2);
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(./assets/font/Roboto-Medium.ttf),
+    url(./assets/font/Roboto-Medium.woff),
+    url(./assets/font/Roboto-Medium.woff2);
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(./assets/font/Roboto-Regular.ttf),
+    url(./assets/font/Roboto-Regular.woff),
+    url(./assets/font/Roboto-Regular.woff2);
+}
+@font-face {
+  font-family: "jost";
+  src: url(./assets/font/Jost-Regular.woff),
+    url(./assets/font/Jost-Regular.woff2);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --color-1: #ffffff;
+  --color-2: #e89487;
+  --color-3: #f5eae9;
+  --color-4: #000000;
+  --color-5: #252525;
+  --color-6: #495266;
+  --color-7: #ff0000;
+  --color-8: #ffab00;
+  --color-9: rgba(255, 255, 255, 0.2);
+  --color-10: #222222;
+  --color-11: #666666;
+  --color-12: #777777;
+  --color-13: #888888;
+  --color-14: #f2f2f2;
+  --color-15: #f5f5f5;
+  --color-16: #212121;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "jost";
+}
+
+ul {
+  list-style: none;
+}
+.container {
+  padding-inline: 50px;
+}
+.mainContainer {
+  padding-top: 90px;
+}
+
+button,
+input {
+  font-family: "jost";
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding-inline: 10px;
+  }
+}
