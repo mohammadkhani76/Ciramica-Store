@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
-  padding-block: 40px;
+  padding-block: 20px;
   align-items: center;
   justify-content: center;
   overflow-x: auto;
@@ -56,8 +56,8 @@
 }
 @media screen and (max-width: 768px) {
   .services-wrapper {
-    justify-content: flex-start; /* از چپ شروع بشه */
-    padding-inline: 10px; /* کمی فاصله از چپ و راست */
+    justify-content: flex-start;
+    padding-inline: 10px;
   }
   .services-item {
     flex: 0 0 250px;

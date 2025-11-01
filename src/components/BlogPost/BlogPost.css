@@ -1,10 +1,9 @@
 .blog-wrapper {
   width: 100%;
-  background-color: cadetblue;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-block: 10px;
+  padding-block: 20px;
 }
 .blog-wrapper > h2 {
   text-align: center;
@@ -14,11 +13,10 @@
 .blog-wrapper {
   width: 100%;
   padding-block: 40px;
-  background-color: #f9f9f9;
 }
 
 .blog-item {
-  background: white;
+  background: var(--color-1);
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -40,16 +38,18 @@
     padding-inline: 15px;
   }
 }
-
-.blog-img img {
+.blog-img {
   width: 100%;
   height: 300px;
+  overflow: hidden;
+}
+.blog-img img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-/* .blog-img img:hover {
-  transform: scale(1.1);
-} */
+
 .blog-item:hover .blog-img img {
   transform: scale(1.1);
 }
@@ -72,7 +72,7 @@
 }
 .blog-swiper {
   width: 100%;
-  height: auto; /* یا یک مقدار مشخص مثل 400px */
+  height: auto;
 }
 
 /* حذف فلش‌های پیش‌فرض Swiper */

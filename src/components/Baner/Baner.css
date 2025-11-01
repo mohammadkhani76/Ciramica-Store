@@ -1,0 +1,71 @@
+.baner-wrapper {
+  width: 100%;
+  height: 400px;
+  margin: 50px 0px 10px 0px;
+}
+.brand-item {
+  background-image: url(./../../assets//pic/cms-banner-1.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* slider details */
+.baner-details {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  padding: 20px 30px;
+  z-index: 8;
+  color: var(--color-16);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 40%;
+
+  & p {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+  & h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+  }
+}
+
+.baner-details button {
+  border: none;
+  background-color: var(--color-2);
+  text-align: center;
+  padding: 8px 18px;
+  color: var(--color-1);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-6);
+  }
+}
+@media screen and (max-width: 900px) {
+  .baner-details {
+    gap: 8px;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+
+    & p {
+      font-size: 0.5rem;
+    }
+    & h2 {
+      font-size: 0.9rem;
+    }
+  }
+}

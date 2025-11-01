@@ -1,5 +1,4 @@
 .details-blog-wrapper {
-  /* background-color: brown; */
   display: flex;
   flex-direction: column;
   gap: 20px;

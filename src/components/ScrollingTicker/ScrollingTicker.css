@@ -1,0 +1,31 @@
+.image-ticker {
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  background-color: var(--color-1);
+  margin: 30px 0px;
+}
+
+.image-track {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  animation: scroll 20s linear infinite;
+}
+
+.image-track img {
+  height: 62px;
+  width: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+  user-select: none;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
