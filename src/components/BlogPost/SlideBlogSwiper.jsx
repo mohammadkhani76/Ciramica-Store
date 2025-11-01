@@ -96,12 +96,17 @@ export const SlideBlogSwiper = () => {
         <SwiperSlide key={i}>
           <div className="blog-item">
             <div className="blog-img">
-              <img src={item.img} alt={item.title} />
+              <Link to={`/blog/${item.id}`}>
+                <img src={item.img} alt={item.title} />
+              </Link>
             </div>
             <div className="blog-info">
               <span>{item.date}</span> | <span>by {item.author}</span>
             </div>
-            <h2>{item.title}</h2>
+            <Link to={`/blog/${item.id}`} className="blog-link">
+              <h2>{item.title}</h2>
+            </Link>
+
             <p>{handelLimitText(item.description, 80)}</p>
             <Link to={`/blog/${item.id}`} className="blog-link">
               Read More...
