@@ -1,8 +1,8 @@
 import "./ProductCategory.css";
-import cat1 from "./../../assets/pic/cat-1-1.jpg";
-import cat2 from "./../../assets/pic/cat-2-1.jpg";
-import cat3 from "./../../assets/pic/cat-3-1.jpg";
-import cat4 from "./../../assets/pic/cat-4-1.jpg";
+import cat1 from "./../../../../assets/media/HomeMedia/ProductCategoryMedia/cat-1-1.jpg";
+import cat2 from "./../../../../assets/media/HomeMedia/ProductCategoryMedia/cat-2-1.jpg";
+import cat3 from "./../../../../assets/media/HomeMedia/ProductCategoryMedia/cat-3-1.jpg";
+import cat4 from "./../../../../assets/media/HomeMedia/ProductCategoryMedia/cat-4-1.jpg";
 
 export const ProductCategory = () => {
   const Category = [

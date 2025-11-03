@@ -3,13 +3,17 @@ import { headerDataIcon } from "../../../../constants/HeaderData";
 import { useCartStore } from "../../../../Store/CartStore";
 import { useFavoriteStore } from "../../../../Store/FavoriteStore";
 
-export const HeaderBottomIcon = () => {
+export const HeaderBottomIcon = ({ isMobile }) => {
   const cartCount = useCartStore((state) => state.cartCount);
   const favoriteCount = useFavoriteStore((state) => state.favoriteCount);
 
   return (
     <>
-      <ul>
+      <ul
+        className={
+          isMobile ? "mobile-bottom-menu-icon" : "header-bottom-menu-icon"
+        }
+      >
         {headerDataIcon.map((item, i) => (
           <li key={i}>
             <Link to={item.link}>

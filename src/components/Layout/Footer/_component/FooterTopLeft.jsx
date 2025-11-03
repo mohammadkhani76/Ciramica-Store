@@ -1,5 +1,5 @@
-import appStore from "./../../../../assets/pic/app-store.png";
-import googlePlay from "./../../../../assets/pic/google-play.png";
+import appStore from "./../../../../assets/media/FooterMedia/app-store.png";
+import googlePlay from "./../../../../assets/media/FooterMedia/google-play.png";
 
 export const FooterTopLeft = () => (
   <div className="footer-top-left">

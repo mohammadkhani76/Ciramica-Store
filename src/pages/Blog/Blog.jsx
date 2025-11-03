@@ -1,9 +1,9 @@
-import { DetailsBlog } from "../../components/DetailsBlog/DetailsBlog";
+import { BlogPost } from "../../components/BlogPost/BlogPost";
 
 export const Blog = () => {
   return (
     <div className="mainContainer container">
-      <DetailsBlog />
+      <BlogPost />
     </div>
   );
 };

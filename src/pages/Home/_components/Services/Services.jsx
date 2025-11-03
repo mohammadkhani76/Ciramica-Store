@@ -1,7 +1,7 @@
-import { SvgMoneyBack } from "../../assets/icon/SvgMoneyBack";
-import { SvgShiping } from "../../assets/icon/SvgShiping";
-import { SvgStoreSearch } from "../../assets/icon/SvgStoreSearch";
-import { SvgSupports } from "../../assets/icon/SvgSupports";
+import { SvgMoneyBack } from "../../../../assets/icon/SvgMoneyBack";
+import { SvgShiping } from "../../../../assets/icon/SvgShiping";
+import { SvgStoreSearch } from "../../../../assets/icon/SvgStoreSearch";
+import { SvgSupports } from "../../../../assets/icon/SvgSupports";
 import "./Services.css";
 export const Services = () => {
   const servicesData = [

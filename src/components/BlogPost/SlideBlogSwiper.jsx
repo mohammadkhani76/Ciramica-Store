@@ -5,12 +5,12 @@ import "swiper/css/pagination";
 import "./BlogPost.css";
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper/modules";
 
-import blog1 from "./../../assets/pic/blog-1.jpg";
-import blog2 from "./../../assets/pic/blog-2.jpg";
-import blog3 from "./../../assets/pic/blog-3.jpg";
-import blog4 from "./../../assets/pic/blog-4.jpg";
-import blog5 from "./../../assets/pic/blog-5.jpg";
-import blog6 from "./../../assets/pic/blog-6.jpg";
+import blog1 from "./../../assets/media/HomeMedia/BlogMedia/blog-1.jpg";
+import blog2 from "./../../assets/media/HomeMedia/BlogMedia/blog-2.jpg";
+import blog3 from "./../../assets/media/HomeMedia/BlogMedia/blog-3.jpg";
+import blog4 from "./../../assets/media/HomeMedia/BlogMedia/blog-4.jpg";
+import blog5 from "./../../assets/media/HomeMedia/BlogMedia/blog-5.jpg";
+import blog6 from "./../../assets/media/HomeMedia/BlogMedia/blog-6.jpg";
 import { Link } from "react-router";
 
 export const blogPosts = [

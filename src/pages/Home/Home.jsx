@@ -1,15 +1,16 @@
-import { Slider } from "../../components/Slider/Slider";
 import "./Home.css";
+import { Slider } from "./_components/Slider/Slider";
+import { Services } from "./_components/Services/Services";
+import { Discount } from "./_components/Discount/Discount";
+import { ProductsList } from "./../../components/ProductsList/ProductsList";
+import { ScrollingTicker } from "./_components/ScrollingTicker/ScrollingTicker";
+import { ProductCategory } from "./_components/ProductCategory/ProductCategory";
+import { Baner } from "./_components/Baner/Baner";
+import { BlogPost } from "./../../components/BlogPost/BlogPost";
+import { Newsletter } from "./../../components/Newsletter/Newsletter";
+
 import { useCartStore } from "./../../Store/CartStore";
 import { useFavoriteStore } from "./../../Store/FavoriteStore";
-import { Services } from "../../components/Services/Services";
-import { Discount } from "../../components/Discount/Discount";
-import { ProductCategory } from "../../components/ProductCategory/ProductCategory";
-import { BlogPost } from "../../components/BlogPost/BlogPost";
-import { ScrollingTicker } from "../../components/ScrollingTicker/ScrollingTicker";
-import { Products } from "../../components/Products/Products";
-import { Baner } from "../../components/Baner/Baner";
-import { Newsletter } from "../../components/Newsletter/Newsletter";
 export const Home = () => {
   const { cartCount, addToCart, removeFromCart } = useCartStore();
   const { favoriteCount, addToFavorite, removeFromFavorite } =
@@ -20,15 +21,13 @@ export const Home = () => {
       <Slider />
       <Services />
       <Discount />
-      <Products />
+      <ProductsList />
       <ScrollingTicker />
-
       <ProductCategory />
       <Baner />
       <BlogPost />
-
       <Newsletter />
-      {/* <div className="container homeWrapper">
+      <div className="container homeWrapper">
         <button onClick={addToCart}>+</button>
         <button onClick={removeFromCart}>-</button>
       </div>
@@ -36,7 +35,7 @@ export const Home = () => {
       <div className="container homeWrapper">
         <button onClick={addToFavorite}>+</button>
         <button onClick={removeFromFavorite}>-</button>
-      </div> */}
+      </div>
     </>
   );
 };

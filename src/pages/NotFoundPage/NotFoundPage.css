@@ -1,0 +1,23 @@
+.notfound-wrapper {
+  height: 100vh;
+  background-color: var(--color-17);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  & h1 {
+    font-size: 5rem;
+  }
+  & h2 {
+    font-size: 3rem;
+  }
+}
+.notfound-wrapper p a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: var(--color-18);
+}
+.notfound-wrapper p:hover a {
+  color: var(--color-2);
+}

@@ -1,11 +1,14 @@
+import { Link } from "react-router";
 import { menuTop } from "../../../../constants/HeaderData";
 
 export const HeaderTop = () => {
   return (
     <>
       <div className="header-top-inner">
-        Free Shipping World wide for all orders over $199
-        <a href="#"> SHOP NOW</a>
+        <p>
+          Free Shipping World wide for all orders over $199
+          <a href="#"> SHOP NOW</a>
+        </p>
       </div>
       <nav>
         <HeaderTopMenu />
@@ -14,13 +17,13 @@ export const HeaderTop = () => {
   );
 };
 
-export const HeaderTopMenu = () => {
+export const HeaderTopMenu = ({ isMobile }) => {
   return (
     <>
-      <ul className="header-top-menu">
+      <ul className={isMobile ? "mobile-top-menu-second" : "header-top-menu"}>
         {menuTop.map((item, index) => (
           <li key={index}>
-            <a href="#">{item}</a>
+            <Link to={item.link}>{item.title}</Link>
           </li>
         ))}
       </ul>

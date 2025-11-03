@@ -3,8 +3,8 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import slider2 from "../../assets/pic/main-banner-1.jpg";
-import slider1 from "../../assets/pic/main-banner-2.jpg";
+import slider2 from "../../../../assets/media/HomeMedia/SliderMedia/main-banner-1.jpg";
+import slider1 from "../../../../assets/media/HomeMedia/SliderMedia/main-banner-2.jpg";
 import "./Slider.css";
 
 export const slider = [

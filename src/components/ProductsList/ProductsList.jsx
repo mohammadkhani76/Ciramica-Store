@@ -1,13 +1,12 @@
-import "./Products.css";
-import front from "./../../assets/pic/cat-2-1.jpg";
-import back from "./../../assets/pic/cat-3-1.jpg";
+import "./ProductsList.css";
 import { SvgFavorite } from "../../assets/icon/SvgFavorite";
 import { SvgCart } from "../../assets/icon/SvgCart";
 import { SvgStar } from "../../assets/icon/SvgStar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router";
 
-export const Products = () => {
+export const ProductsList = () => {
   const [products, setProducts] = useState([]);
   async function getProduct() {
     try {
@@ -33,7 +32,7 @@ export const Products = () => {
               <div className="product-discount">{item.discount}%</div>
               {/* product-picture */}
               <div className="product-item-img-box">
-                <a href="#">
+                <Link to={`/product/${item.id}`}>
                   <img
                     src={item.imageFront}
                     alt={item.title}
@@ -52,12 +51,12 @@ export const Products = () => {
                       <SvgCart />
                     </button>
                   </div>
-                </a>
+                </Link>
               </div>
               {/* product-info */}
               <div className="product-item-info">
                 <h4>
-                  <a href="#">{item.title}</a>
+                  <Link to={`/product/${item.id}`}>{item.title}</Link>
                 </h4>
                 <span>
                   <SvgStar />

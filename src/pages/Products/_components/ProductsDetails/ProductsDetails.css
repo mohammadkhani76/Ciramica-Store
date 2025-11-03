@@ -1,0 +1,17 @@
+.details-product-wrapper {
+  display: flex;
+  gap: 20px;
+  padding-block: 20px;
+  justify-content: center;
+}
+.details-product-img {
+  width: 100%;
+  height: 400px;
+  background-color: aquamarine;
+}
+.details-product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  aspect-ratio: 2/1;
+}

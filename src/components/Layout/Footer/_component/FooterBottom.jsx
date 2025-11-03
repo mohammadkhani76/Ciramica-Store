@@ -1,4 +1,4 @@
-import payment from "./../../../../assets/pic/payment.png";
+import payment from "./../../../../assets/media/FooterMedia/payment.png";
 import { footerSocial } from "./../../../../constants/FooterData";
 
 export const FooterBottom = () => {
