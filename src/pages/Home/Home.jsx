@@ -27,7 +27,7 @@ export const Home = () => {
       <Baner />
       <BlogPost />
       <Newsletter />
-      <div className="container homeWrapper">
+      {/* <div className="container homeWrapper">
         <button onClick={addToCart}>+</button>
         <button onClick={removeFromCart}>-</button>
       </div>
@@ -35,7 +35,7 @@ export const Home = () => {
       <div className="container homeWrapper">
         <button onClick={addToFavorite}>+</button>
         <button onClick={removeFromFavorite}>-</button>
-      </div>
+      </div> */}
     </>
   );
 };

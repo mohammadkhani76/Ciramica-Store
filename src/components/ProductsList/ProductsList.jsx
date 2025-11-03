@@ -8,6 +8,7 @@ import { Link } from "react-router";
 
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
+  const [hasDiscount, setHasDescount] = useState(false);
   async function getProduct() {
     try {
       const response = await axios.get(
@@ -59,13 +60,35 @@ export const ProductsList = () => {
                   <Link to={`/product/${item.id}`}>{item.title}</Link>
                 </h4>
                 <span>
-                  <SvgStar />
-                  {item.rate}
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <SvgStar
+                      key={i}
+                      className={i < item.rate ? "star filled" : "star"}
+                    />
+                  ))}
                 </span>
+                {/* <span>
+                  {"★".repeat(item.rate)}
+                  {"☆".repeat(5 - item.rate)}
+                </span> */}
                 <p>
-                  <del>{item.price} $</del>
-                  <ins>{item.discountPrice} $</ins>
+                  {item.discountPrice ? (
+                    <>
+                      <del>{item.price} $</del>
+                      <ins>{item.discountPrice} $</ins>
+                    </>
+                  ) : (
+                    <ins>{item.price} $</ins>
+                  )}
                 </p>
+              </div>
+              <div className="product-item-btn">
+                <button className="product-item-btn-cart">
+                  <SvgCart /> <span>Add To Cart</span>
+                </button>
+                <button className="product-item-btn-fav">
+                  <SvgFavorite />
+                </button>
               </div>
             </div>
           ))}
