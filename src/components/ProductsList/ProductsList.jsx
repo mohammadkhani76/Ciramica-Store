@@ -5,10 +5,14 @@ import { SvgStar } from "../../assets/icon/SvgStar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router";
+import { useCartStore } from "../../Store/CartStore";
+import { useFavoriteStore } from "../../Store/FavoriteStore";
 
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
-  const [hasDiscount, setHasDescount] = useState(false);
+  const { cartCount, addToCart, removeFromCart } = useCartStore();
+  const { favoriteCount, addToFavorite, removeFromFavorite } =
+    useFavoriteStore();
   async function getProduct() {
     try {
       const response = await axios.get(
@@ -44,15 +48,25 @@ export const ProductsList = () => {
                     alt={item.title}
                     className="img-box-back"
                   />
-                  <div className="product-icons">
-                    <button className="icon-btn">
-                      <SvgFavorite />
-                    </button>
-                    <button className="icon-btn">
-                      <SvgCart />
-                    </button>
-                  </div>
                 </Link>
+                <div className="product-icons">
+                  <button
+                    className="icon-btn"
+                    onClick={() => {
+                      addToFavorite(item);
+                    }}
+                  >
+                    <SvgFavorite />
+                  </button>
+                  <button
+                    className="icon-btn"
+                    onClick={() => {
+                      addToCart({ ...item, quantity: 1 });
+                    }}
+                  >
+                    <SvgCart />
+                  </button>
+                </div>
               </div>
               {/* product-info */}
               <div className="product-item-info">
@@ -83,10 +97,20 @@ export const ProductsList = () => {
                 </p>
               </div>
               <div className="product-item-btn">
-                <button className="product-item-btn-cart">
+                <button
+                  className="product-item-btn-cart"
+                  onClick={() => {
+                    addToCart({ ...item, quantity: 1 });
+                  }}
+                >
                   <SvgCart /> <span>Add To Cart</span>
                 </button>
-                <button className="product-item-btn-fav">
+                <button
+                  className="product-item-btn-fav"
+                  onClick={() => {
+                    addToCart(item);
+                  }}
+                >
                   <SvgFavorite />
                 </button>
               </div>

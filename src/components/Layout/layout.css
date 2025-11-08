@@ -238,7 +238,7 @@ main {
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .modal-overlay {
-  width: 40%;
+  width: 100%;
   background-color: var(--color-1);
   height: 100vh;
   display: flex;
@@ -284,11 +284,11 @@ main {
   fill: var(--color-4);
 }
 .mobile-top-menu-wrapper {
-  background-color: cornflowerblue;
+  /* background-color: cornflowerblue; */
   padding: 10px;
 }
 .mobile-top-menu-first {
-  background-color: darksalmon;
+  /* background-color: darksalmon; */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -296,14 +296,14 @@ main {
   padding: 10px;
 }
 .mobile-top-menu-second {
-  background-color: rgb(122, 233, 124);
+  /* background-color: rgb(122, 233, 124); */
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 10px;
 }
 .mobile-menu-wrapper-bottom {
-  background-color: rgb(169, 68, 34);
+  /* background-color: rgb(169, 68, 34); */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -314,14 +314,14 @@ main {
   color: var(--color-4);
 }
 .mobile-bottom-menu-icon {
-  background-color: darkgreen;
+  /* background-color: darkgreen; */
   display: flex;
   gap: 10px;
   padding: 10px;
   align-items: center;
   & svg {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     fill: var(--color-4);
   }
 }
