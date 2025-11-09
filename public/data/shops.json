@@ -1,0 +1,232 @@
+{
+  "shops": [
+    {
+      "shopID": 1,
+      "shopName": "Home Decor",
+      "menu": [
+        {
+          "category": "Tableware",
+          "list": [
+            {
+              "id": "1",
+              "title": "Beige Serveware Ceramic White Matte Plates",
+              "price": 54,
+              "discountPrice": 50,
+              "rate": 5,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/1-600x723.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/15-600x723.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "description": "The right dinner set is as significant as the right recipe. It supplements an opulent feel to your dining space. A sophisticated set of dinnerware sets the right mood, thereby enhancing your dining experience."
+            },
+            {
+              "id": "2",
+              "title": "Wouter Ligthart Ceramics Dinner Set",
+              "price": 59,
+              "discountPrice": 55,
+              "rate": 4,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "description": "Fine dining experience with this Printed piece Dinner set. Dine in style with this finest ceramic dinner set and amaze your family and guests. It is look wonderful and make your dinner easy."
+            },
+            {
+              "id": "3",
+              "title": "Set of 6 New White Plastic Double Wall",
+              "price": 75,
+              "discountPrice": "",
+              "rate": 4,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/5-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/12-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/2-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/9-768x925.jpg",
+              "description": "Our ceramic dinner set is one of a kind that will fit the theme and decor of your space seamlessly. Enhance your kitchen and table decor and add a spoonful of gorgeousness."
+            },
+            {
+              "id": "4",
+              "title": "Gray Melamine Dinnerware Sets And Bowls Sets",
+              "price": 70,
+              "discountPrice": 68,
+              "rate": 4,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/7-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "description": "The right dinner set is as significant as the right recipe. It supplements an opulent feel to your dining space. A sophisticated set of dinnerware sets the right mood, thereby enhancing your dining experience."
+            },
+            {
+              "id": "5",
+              "title": "Terry Planter Ash–Fego Home Living",
+              "price": 90,
+              "discountPrice": 85,
+              "rate": 5,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/2-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/9-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/5-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/12-768x925.jpg",
+              "description": "Our ceramic dinner set is one of a kind that will fit the theme and decor of your space seamlessly. Enhance your kitchen and table decor and add a spoonful of gorgeousness."
+            },
+            {
+              "id": "6",
+              "title": "Traditional Nude Somers Ceramic Vase",
+              "price": 67,
+              "discountPrice": 60,
+              "rate": 5,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/11-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/6-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/5-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/12-768x925.jpg",
+              "description": "The right dinner set is as significant as the right recipe. It supplements an opulent feel to your dining space. A sophisticated set of dinnerware sets the right mood, thereby enhancing your dining experience."
+            },
+            {
+              "id": "7",
+              "title": "Small Wooden Bowl Set, Dip Sauce",
+              "price": 57,
+              "discountPrice": "",
+              "rate": 3,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/10-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "description": "Fine dining experience with this Printed piece Dinner set. Dine in style with this finest ceramic dinner set and amaze your family and guests. It is look wonderful and make your dinner easy."
+            },
+            {
+              "id": "8",
+              "title": "White & Black Glaze Cup And Dish Set",
+              "price": 70,
+              "discountPrice": 56,
+              "rate": 4,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/4-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/8-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/5-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/12-768x925.jpg",
+              "description": "Fine dining experience with this Printed piece Dinner set. Dine in style with this finest ceramic dinner set and amaze your family and guests. It is look wonderful and make your dinner easy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "shopID": 2,
+      "shopName": "Living Style",
+      "menu": [
+        {
+          "category": "Drinkware",
+          "list": [
+            {
+              "id": "9",
+              "title": "White & Black Glaze Cup And Dish Set",
+              "price": 70,
+              "discountPrice": 56,
+              "rate": 4,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/4-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/8-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/5-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/12-768x925.jpg",
+              "description": "Fine dining experience with this Printed piece Dinner set. Dine in style with this finest ceramic dinner set and amaze your family and guests. It is look wonderful and make your dinner easy."
+            },
+            {
+              "id": "10",
+              "title": "Small Wooden Bowl Set, Dip Sauce",
+              "price": 57,
+              "discountPrice": "",
+              "rate": 3,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/10-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "description": "Fine dining experience with this Printed piece Dinner set. Dine in style with this finest ceramic dinner set and amaze your family and guests. It is look wonderful and make your dinner easy."
+            },
+            {
+              "id": "11",
+              "title": "Traditional Nude Somers Ceramic Vase",
+              "price": 67,
+              "discountPrice": 60,
+              "rate": 5,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/11-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/6-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/5-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/12-768x925.jpg",
+              "description": "The right dinner set is as significant as the right recipe. It supplements an opulent feel to your dining space. A sophisticated set of dinnerware sets the right mood, thereby enhancing your dining experience."
+            },
+            {
+              "id": "12",
+              "title": "Terry Planter Ash–Fego Home Living",
+              "price": 90,
+              "discountPrice": 85,
+              "rate": 5,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/2-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/9-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/5-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/12-768x925.jpg",
+              "description": "Our ceramic dinner set is one of a kind that will fit the theme and decor of your space seamlessly. Enhance your kitchen and table decor and add a spoonful of gorgeousness."
+            },
+            {
+              "id": "13",
+              "title": "Gray Melamine Dinnerware Sets And Bowls Sets",
+              "price": 70,
+              "discountPrice": 68,
+              "rate": 4,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/7-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "description": "The right dinner set is as significant as the right recipe. It supplements an opulent feel to your dining space. A sophisticated set of dinnerware sets the right mood, thereby enhancing your dining experience."
+            },
+            {
+              "id": "14",
+              "title": "Wouter Ligthart Ceramics Dinner Set",
+              "price": 59,
+              "discountPrice": 55,
+              "rate": 4,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "description": "Fine dining experience with this Printed piece Dinner set. Dine in style with this finest ceramic dinner set and amaze your family and guests. It is look wonderful and make your dinner easy."
+            },
+            {
+              "id": "15",
+              "title": "Set of 6 New White Plastic Double Wall",
+              "price": 75,
+              "discountPrice": "",
+              "rate": 4,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/5-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/12-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/2-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/9-768x925.jpg",
+              "description": "Our ceramic dinner set is one of a kind that will fit the theme and decor of your space seamlessly. Enhance your kitchen and table decor and add a spoonful of gorgeousness."
+            },
+
+            {
+              "id": "16",
+              "title": "Beige Serveware Ceramic White Matte Plates",
+              "price": 54,
+              "discountPrice": 50,
+              "rate": 5,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/1-600x723.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/15-600x723.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "description": "The right dinner set is as significant as the right recipe. It supplements an opulent feel to your dining space. A sophisticated set of dinnerware sets the right mood, thereby enhancing your dining experience."
+            },
+
+            {
+              "id": "17",
+              "title": "Wouter Ligthart Ceramics Dinner Set",
+              "price": 59,
+              "discountPrice": 55,
+              "rate": 4,
+              "imageFront": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageBack": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "imageGallery1": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/3-768x925.jpg",
+              "imageGallery2": "https://demos.codezeel.com/wordpress/WCM08/WCM080183/default/wp-content/uploads/2024/01/21-768x925.jpg",
+              "description": "Fine dining experience with this Printed piece Dinner set. Dine in style with this finest ceramic dinner set and amaze your family and guests. It is look wonderful and make your dinner easy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

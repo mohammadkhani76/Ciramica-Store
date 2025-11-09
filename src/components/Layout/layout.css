@@ -238,7 +238,7 @@ main {
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .modal-overlay {
-  width: 100%;
+  width: 90%;
   background-color: var(--color-1);
   height: 100vh;
   display: flex;

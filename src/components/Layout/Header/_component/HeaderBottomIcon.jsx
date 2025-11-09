@@ -4,8 +4,9 @@ import { useCartStore } from "../../../../Store/CartStore";
 import { useFavoriteStore } from "../../../../Store/FavoriteStore";
 
 export const HeaderBottomIcon = ({ isMobile }) => {
-  const cartCount = useCartStore((state) => state.cartCount);
+  const cart = useCartStore((state) => state.cart);
   const favoriteCount = useFavoriteStore((state) => state.favoriteCount);
+  const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <>

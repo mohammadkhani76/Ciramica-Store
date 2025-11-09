@@ -8,6 +8,7 @@ import { ProductCategory } from "./_components/ProductCategory/ProductCategory";
 import { Baner } from "./_components/Baner/Baner";
 import { BlogPost } from "./../../components/BlogPost/BlogPost";
 import { Newsletter } from "./../../components/Newsletter/Newsletter";
+import { ProductStore } from "../../components/ProductStore/ProductStore";
 
 import { useCartStore } from "./../../Store/CartStore";
 import { useFavoriteStore } from "./../../Store/FavoriteStore";
@@ -21,10 +22,12 @@ export const Home = () => {
       <Slider />
       <Services />
       <Discount />
-      <ProductsList />
+      <ProductStore />
       <ScrollingTicker />
       <ProductCategory />
       <Baner />
+      <ProductsList />
+
       <BlogPost />
       <Newsletter />
       {/* <div className="container homeWrapper">
