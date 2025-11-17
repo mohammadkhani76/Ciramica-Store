@@ -1,9 +1,8 @@
-import { ProductsList } from "../../components/ProductsList/ProductsList";
-import "./Products.css";
+import { ProductStore } from "../../components/ProductStore/ProductStore";
 export const Products = () => {
   return (
     <div className="mainContainer container">
-      <ProductsList />
+      <ProductStore />
     </div>
   );
 };

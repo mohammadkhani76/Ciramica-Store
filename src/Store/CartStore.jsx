@@ -1,69 +1,74 @@
 import { create } from "zustand";
-// const [cartCount, setCartCount] = useState(0);
+import { persist } from "zustand/middleware";
+export const useBasketStore = create(
+  persist(
+    (set, get) => ({
+      basket: [],
+      addToCart: (shopID, productData) => {
+        const basket = [...get().basket];
+        const existingShop = basket.find((shop) => shop.shopID === shopID);
 
-export const useCartStore = create((set, get) => ({
-  cart: [],
+        if (existingShop) {
+          const existingProduct = existingShop.basket.find(
+            (product) => product.id === productData.id
+          );
+          if (existingProduct) {
+            existingProduct.quantity += productData.quantity;
+          } else {
+            existingShop.basket.push(productData);
+          }
+        } else {
+          basket.push({
+            shopID: shopID,
+            basket: [productData],
+          });
+        }
+        set({ basket });
+        console.log("Basket updated:", basket);
+      },
 
-  addToCart: (product) => {
-    const { cart } = get();
-    const existing = cart.find((item) => item.id === product.id);
+      removeFromCart: (shopID, productData) => {
+        const basket = [...get().basket];
+        const existingShop = basket.find((shop) => shop.shopID === shopID);
+        if (existingShop) {
+          const existingProduct = existingShop.basket.find(
+            (product) => product.id === productData.id
+          );
+          if (existingProduct) {
+            existingProduct.quantity -= productData.quantity;
+            if (existingProduct.quantity <= 0) {
+              existingShop.basket = existingShop.basket.filter(
+                (p) => p.id !== productData.id
+              );
+            }
+          }
+        }
+        set({ basket });
+        console.log("Basket updated:", basket);
+      },
 
-    if (existing) {
-      set({
-        cart: cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + product.quantity }
-            : item
-        ),
-      });
-    } else {
-      set({ cart: [...cart, product] });
-    }
-  },
+      deleteProduct: (shopID, productData) => {
+        const basket = [...get().basket];
+        const existingShop = basket.find((shop) => shop.shopID === shopID);
 
-  removeFromCart: (id) =>
-    set((state) => ({
-      cart: state.cart.filter((item) => item.id !== id),
-    })),
-}));
+        if (existingShop) {
+          existingShop.basket = existingShop.basket.filter(
+            (product) => product.id !== productData.id
+          );
+        }
+        set({ basket });
+        console.log("Basket updated:", basket);
+      },
 
-// ============================================================================
-// export const useCartStore = create((set) => ({
-//   cartCount: 0,
-//   addToCart: () => set((state) => ({ cartCount: state.cartCount + 1 })),
-//   removeFromCart: () =>
-//     set((state) => ({
-//       cartCount: (state.cartCount = 0 ? state.cartCount - 1 : 0),
-//     })),
-// }));
-// =======================================================================
-// useEffect(() => {
-//   const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-//   setCart(savedCart);
-// }, []);
-
-// useEffect(() => {
-//   localStorage.setItem("cart", JSON.stringify(cart));
-// }, [cart]);
-
-// const [cart, setCart] = useState([]);
-
-// const addToCart = ({ id, title, imageFront, price, quantity = 1 }) => {
-//   setCart((prevCart) => {
-//     const esxisting = prevCart.find((item) => item.id === id);
-//     if (esxisting) {
-//       return prevCart.map((item) =>
-//         item.id === id ? { ...item, quantity: item.quantity + quantity } : item
-//       );
-//     } else {
-//       return [...prevCart, { id, title, imageFront, price, quantity }];
-//     }
-//   });
-// };
-// // تعداد کل محصولات در سبد
-// const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-
-// const removeFromCart = (id) => {
-//   setCart((prevCart) => prevCart.filter((item) => item.id !== id));
-//   updatecart();
-// };
+      basketCount: () => {
+        const basket = get().basket;
+        return basket.reduce(
+          (acc, shop) =>
+            (acc += shop.basket.reduce((sum, p) => sum + p.quantity, 0)),
+          0
+        );
+      },
+    }),
+    { name: "_basket" }
+  )
+);

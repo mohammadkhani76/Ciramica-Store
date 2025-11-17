@@ -15,13 +15,12 @@ export const HeaderBottom = () => {
     const handleResize = () => {
       const mobile = window.innerWidth <= 1024;
       setIsMobile(mobile);
-      // اگه از موبایل رفتیم به دسکتاپ، منو رو ببند
       if (!mobile) {
         setIsOpenMenu(false);
       }
     };
 
-    handleResize(); // بار اول اجرا بشه
+    handleResize();
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);

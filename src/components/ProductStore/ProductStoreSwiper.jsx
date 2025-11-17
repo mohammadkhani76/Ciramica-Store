@@ -11,7 +11,12 @@ import { SvgFavorite } from "../../assets/icon/SvgFavorite";
 import { SvgCart } from "../../assets/icon/SvgCart";
 import { SvgStar } from "../../assets/icon/SvgStar";
 
-export const ProductStoreSwiper = ({ product, addToFavorite, addToCart }) => {
+export const ProductStoreSwiper = ({
+  product,
+  addToFavorite,
+  addToCart,
+  shopID,
+}) => {
   return (
     <>
       <Swiper
@@ -74,7 +79,15 @@ export const ProductStoreSwiper = ({ product, addToFavorite, addToCart }) => {
                   </button>
                   <button
                     className="icon-btn"
-                    onClick={() => addToCart({ ...item, quantity: 1 })}
+                    onClick={() =>
+                      addToCart(shopID, {
+                        id: item.id,
+                        title: item.title,
+                        price: item.discountPrice || item.price,
+                        quantity: 1,
+                        image: item.imageFront,
+                      })
+                    }
                   >
                     <SvgCart />
                   </button>
@@ -110,7 +123,15 @@ export const ProductStoreSwiper = ({ product, addToFavorite, addToCart }) => {
               <div className="store-item-btn">
                 <button
                   className="store-item-btn-cart"
-                  onClick={() => addToCart({ ...item, quantity: 1 })}
+                  onClick={() =>
+                    addToCart(shopID, {
+                      id: item.id,
+                      title: item.title,
+                      price: item.discountPrice || item.price,
+                      quantity: 1,
+                      image: item.imageFront,
+                    })
+                  }
                 >
                   <SvgCart /> <span>Add To Cart</span>
                 </button>

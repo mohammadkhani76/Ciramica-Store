@@ -5,65 +5,54 @@ import axios from "axios";
 import { Newsletter } from "../../../../components/Newsletter/Newsletter";
 import { ProductsDetailsSwiper } from "./ProductsDetailsSwiper";
 import { Loader } from "../../../../components/Loader/Loader";
-import { useCartStore } from "../../../../Store/CartStore";
+import { useBasketStore } from "../../../../Store/CartStore";
+// import { useBasket } from "../../../../customHook/useBasket";
 
 export const ProductsDetails = () => {
-  const { addToCart } = useCartStore();
   const { id } = useParams();
-  const [shops, setShops] = useState(null);
+  const [product, setProduct] = useState(null);
   const [count, setCount] = useState(0);
+  const [shopID, setShopID] = useState(null);
+  // const { addToCart, removeFromCart, deleteProduct } = useBasket();
+  const { addToCart, removeFromCart, deleteProduct } = useBasketStore();
 
-  const handlelInc = () => {
-    setCount((prev) => prev + 1);
-  };
+  const handleInc = () => setCount((prev) => prev + 1);
+  const handleDec = () => setCount((prev) => (prev <= 0 ? 0 : prev - 1));
 
-  const handleDec = () => {
-    return count <= 0 ? setCount(0) : setCount((prev) => prev - 1);
-  };
-
-  const handelCart = () => {
-    if (count > 0) {
-      addToCart({
-        id: shops.id,
-        title: shops.title,
-        price: shops.discountPrice || shops.price,
-        image: shops.imageFront,
-        quantity: count,
-      });
-      setCount(0);
-    } else {
-      alert("The product quantity must be greater than 0");
-    }
-  };
-
-  async function getProduct() {
+  // Fetch product
+  const getProduct = async () => {
     try {
       const response = await axios.get("/data/shops.json");
-      const data = response.data.shops; // اینجا shops رو می‌گیری
+      const data = response.data.shops;
       console.log(data);
-      // پیدا کردن محصول با id
+
       let productFound = null;
+      let shopIDFound = null;
+
       for (const shop of data) {
         for (const menu of shop.menu) {
           const found = menu.list.find((p) => p.id === id);
           if (found) {
             productFound = found;
+            shopIDFound = shop.shopID;
             break;
           }
         }
         if (productFound) break;
       }
-      setShops(productFound);
+
+      setProduct(productFound);
+      setShopID(shopIDFound);
     } catch (error) {
       console.error("Error fetching product:", error);
     }
-  }
+  };
 
   useEffect(() => {
     getProduct();
   }, [id]);
 
-  if (!shops) return <Loader />;
+  if (!product) return <Loader />;
 
   return (
     <div className="container mainContainer">
@@ -71,37 +60,71 @@ export const ProductsDetails = () => {
         <div className="details-product-img">
           <ProductsDetailsSwiper
             images={[
-              shops.imageFront,
-              shops.imageBack,
-              shops.imageGallery1,
-              shops.imageGallery2,
+              product.imageFront,
+              product.imageBack,
+              product.imageGallery1,
+              product.imageGallery2,
             ]}
-            alt={shops.title}
+            alt={product.title}
           />
         </div>
 
         <div className="details-product-info">
-          <h2>{shops.title}</h2>
+          <h2>{product.title}</h2>
           <p>Code: {id}</p>
           <p className="details-product-discount">
-            {shops.discountPrice ? (
+            {product.discountPrice ? (
               <>
-                <del>{shops.price} $</del>
-                <ins>{shops.discountPrice} $</ins>
+                <del>{product.price} $</del>
+                <ins>{product.discountPrice} $</ins>
               </>
             ) : (
-              <ins>{shops.price} $</ins>
+              <ins>{product.price} $</ins>
             )}
           </p>
-          <p>{shops.description}</p>
+          <p>{product.description}</p>
+
           <div className="details-product-cart-wrapper">
             <div className="details-product-cart">
               <button onClick={handleDec}>-</button>
               <span>{count}</span>
-              <button onClick={handlelInc}>+</button>
+              <button onClick={handleInc}>+</button>
             </div>
-            <button className="details-product-add" onClick={handelCart}>
+            <button
+              className="details-product-add"
+              onClick={() =>
+                addToCart(shopID, {
+                  id: product.id,
+                  title: product.title,
+                  price: product.discountPrice || product.price,
+                  quantity: count || 1,
+                  image: product.imageFront,
+                })
+              }
+            >
               Add To Cart
+            </button>
+
+            <button
+              className="details-product-add"
+              onClick={() =>
+                removeFromCart(shopID, {
+                  id: product.id,
+                  quantity: count || 1,
+                })
+              }
+            >
+              removed From Cart
+            </button>
+            <button
+              className="details-product-add"
+              onClick={() =>
+                deleteProduct(shopID, {
+                  id: product.id,
+                })
+              }
+            >
+              delete item
             </button>
           </div>
         </div>

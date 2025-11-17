@@ -1,13 +1,13 @@
-import { Link } from "react-router";
-import { headerDataIcon } from "../../../../constants/HeaderData";
-import { useCartStore } from "../../../../Store/CartStore";
-import { useFavoriteStore } from "../../../../Store/FavoriteStore";
+import { useBasketStore } from "../../../../Store/CartStore";
+import { SvgSearch } from "../../../../assets/icon/SvgSearch";
+import { SvgProfile } from "../../../../assets/icon/SvgProfile";
+import { SvgFavorite } from "../../../../assets/icon/SvgFavorite";
+import { SvgCart } from "../../../../assets/icon/SvgCart";
+import { useState } from "react";
 
 export const HeaderBottomIcon = ({ isMobile }) => {
-  const cart = useCartStore((state) => state.cart);
-  const favoriteCount = useFavoriteStore((state) => state.favoriteCount);
-  const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
-
+  const count = useBasketStore((state) => state.basketCount());
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <ul
@@ -15,20 +15,42 @@ export const HeaderBottomIcon = ({ isMobile }) => {
           isMobile ? "mobile-bottom-menu-icon" : "header-bottom-menu-icon"
         }
       >
-        {headerDataIcon.map((item, i) => (
-          <li key={i}>
-            <Link to={item.link}>
-              {item.icon}
-              {item.name === "cart" && cartCount >= 0 && (
-                <span className="badge">{cartCount}</span>
-              )}
-              {item.name === "favorite" && favoriteCount >= 0 && (
-                <span className="badge">{favoriteCount}</span>
-              )}
-            </Link>
-          </li>
-        ))}
+        <li>
+          <button>
+            <SvgSearch />
+          </button>
+        </li>
+        <li>
+          <button>
+            <SvgProfile />
+          </button>
+        </li>
+        <li>
+          <button>
+            <SvgFavorite />
+            <span className="badge">{count}</span>
+          </button>
+        </li>
+        <li>
+          <button onClick={() => setShowModal((prev) => !prev)}>
+            <SvgCart />
+            <span className="badge">{count}</span>
+          </button>
+        </li>
       </ul>
+      <div
+        className={showModal ? "basket_modal" : ""}
+        onClick={() => setShowModal(false)}
+      >
+        {showModal && (
+          <div
+            className="basket_modal_overlay"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p>سبد خرید شما</p>
+          </div>
+        )}
+      </div>
     </>
   );
 };

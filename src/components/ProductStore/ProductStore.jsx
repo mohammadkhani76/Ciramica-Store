@@ -2,13 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./ProductStore.css";
 import { ProductStoreSwiper } from "./ProductStoreSwiper";
-import { useCartStore } from "../../Store/CartStore";
-import { useFavoriteStore } from "../../Store/FavoriteStore";
+import { useBasketStore } from "../../Store/CartStore";
 
 export const ProductStore = () => {
-  const { addToCart } = useCartStore();
-  const { addToFavorite } = useFavoriteStore();
   const [shops, setShops] = useState([]);
+  const { addToCart } = useBasketStore();
 
   async function getProductShop() {
     try {
@@ -32,11 +30,10 @@ export const ProductStore = () => {
           <h2>{shop.shopName}</h2>
           {shop.menu.map((category, catIndex) => (
             <div className="store-items" key={catIndex}>
-              {/* <h3>{category.category}</h3> */}
               <ProductStoreSwiper
                 product={category.list}
                 addToCart={addToCart}
-                addToFavorite={addToFavorite}
+                shopID={shop.shopID}
               />
             </div>
           ))}
