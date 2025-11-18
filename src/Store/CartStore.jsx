@@ -68,6 +68,17 @@ export const useBasketStore = create(
           0
         );
       },
+      basketTotalPrice: () => {
+        const basket = get().basket;
+        return basket.reduce(
+          (acc, shop) =>
+            (acc += shop.basket.reduce(
+              (sum, p) => sum + p.quantity * p.price,
+              0
+            )),
+          0
+        );
+      },
     }),
     { name: "_basket" }
   )

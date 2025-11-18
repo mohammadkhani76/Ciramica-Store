@@ -105,7 +105,7 @@ export const ProductsDetails = () => {
               Add To Cart
             </button>
 
-            <button
+            {/* <button
               className="details-product-add"
               onClick={() =>
                 removeFromCart(shopID, {
@@ -125,7 +125,7 @@ export const ProductsDetails = () => {
               }
             >
               delete item
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
