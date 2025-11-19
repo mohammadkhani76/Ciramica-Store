@@ -6,20 +6,22 @@ import { SvgCart } from "../../../../assets/icon/SvgCart";
 import { SvgClose } from "../../../../assets/icon/SvgClose";
 import { useState } from "react";
 import { Link } from "react-router";
+import { useBasket } from "../../../../customHook/useBasket";
 
 export const HeaderBottomIcon = ({ isMobile }) => {
-  // const count = useBasketStore((state) => state.basketCount());
-  // const basket = useBasketStore((state) => state.basket);
-  // const deleteProduct = useBasketStore((state) => state.deleteProduct);
-  // const basketTotalPrice = useBasketStore((state) => state.basketTotalPrice());
   const { basket } = useBasketStore();
+  const { deleteProduct } = useBasket();
 
-  console.log("basket", basket);
   const count = basket.reduce(
     (acc, shop) => (acc += shop.basket.reduce((sum, p) => sum + p.quantity, 0)),
     0
   );
 
+  const basketTotalPrice = basket.reduce(
+    (acc, shop) =>
+      (acc += shop.basket.reduce((sum, p) => sum + p.quantity * p.price, 0)),
+    0
+  );
   const [showModal, setShowModal] = useState(false);
   return (
     <>
@@ -47,7 +49,6 @@ export const HeaderBottomIcon = ({ isMobile }) => {
         <li>
           <button onClick={() => setShowModal((prev) => !prev)}>
             <SvgCart />
-            {/* <span className="badge">{count}</span> */}
             <span className="badge">{count}</span>
           </button>
         </li>
@@ -105,7 +106,7 @@ export const HeaderBottomIcon = ({ isMobile }) => {
 
                         <div className="basket-modal-products-item-delete">
                           <button
-                          // onClick={() => deleteProduct(shop.shopID, product)}
+                            onClick={() => deleteProduct(shop.shopID, product)}
                           >
                             <SvgClose />
                           </button>
@@ -117,56 +118,8 @@ export const HeaderBottomIcon = ({ isMobile }) => {
               </div>
             )}
 
-            {/* {count === 0 ? (
-              <div className="basket-modal-main-empty">
-                <div className="basket-modal-main-empty-info">
-                  <h3>Your cart is empty</h3>
-                  <p>
-                    No items in your cart. Go on, fill it up with something you
-                    love!
-                  </p>
-                  <button>
-                    <Link to={"/product"}>Start Shopping Now</Link>
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="basket-modal-main-full">
-                <div className="basket-modal-main-full-products">
-                  {basket.map((shop) =>
-                    shop.basket.map((product) => (
-                      <div
-                        className="basket-modal-main-full-products-item"
-                        key={product.id}
-                      >
-                        <div className="basket-modal-products-item-img">
-                          <img src={product.image} alt={product.title} />
-                        </div>
-
-                        <div className="basket-modal-products-item-info">
-                          <p>shopID:{shop.shopID}</p>
-                          <p>{product.title}</p>
-                          <p>
-                            {product.quantity} *{product.price} $
-                          </p>
-                        </div>
-
-                        <div className="basket-modal-products-item-delete">
-                          <button
-                            onClick={() => deleteProduct(shop.shopID, product)}
-                          >
-                            <SvgClose />
-                          </button>
-                        </div>
-                      </div>
-                    ))
-                  )}
-                </div>
-              </div>
-            )} */}
-
             <div className="basket-modal-footer">
-              {/* <div className="basket-modal-footer-total">
+              <div className="basket-modal-footer-total">
                 <p>Subtotal:</p>
                 <p>{basketTotalPrice} $</p>
               </div>
@@ -177,7 +130,7 @@ export const HeaderBottomIcon = ({ isMobile }) => {
                 <button className="basket-modal-footer-btn-Checkout">
                   <Link to={"#"}>Checkout</Link>
                 </button>
-              </div> */}
+              </div>
             </div>
           </div>
         )}

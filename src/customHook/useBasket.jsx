@@ -2,7 +2,7 @@ import { useBasketStore } from "../Store/CartStore";
 import { useLocalStorage } from "./useLocalStorage";
 
 export const useBasket = () => {
-  const basket = [];
+  let basket = [];
   const { setBasket } = useBasketStore();
   const { saveToLocalStorage, loadFromLocalStorage } = useLocalStorage("_b");
   // Add to cart
@@ -67,31 +67,11 @@ export const useBasket = () => {
     console.log("Basket updated:", basket);
   };
 
-  // //total count
-  // const basketCount = () => {
-  //   basket = loadFromLocalStorage();
-  //   return basket.reduce(
-  //     (acc, shop) =>
-  //       (acc += shop.basket.reduce((sum, p) => sum + p.quantity, 0)),
-  //     0
-  //   );
-  // };
-  // //totalprice
-  // const basketTotalPrice = () => {
-  //   basket = loadFromLocalStorage();
-  //   return basket.reduce(
-  //     (acc, shop) =>
-  //       (acc += shop.basket.reduce((sum, p) => sum + p.quantity * p.price, 0)),
-  //     0
-  //   );
-  // };
   return {
     addToCart,
     removeFromCart,
     deleteProduct,
-    // basketCount,
     saveToLocalStorage,
-    // basketTotalPrice,
     loadFromLocalStorage,
   };
 };
