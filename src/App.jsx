@@ -11,6 +11,7 @@ import { ProductsDetails } from "./pages/Products/_components/ProductsDetails/Pr
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { ProductNotFound } from "./pages/Products/_components/ProductsDetails/ProductNotFound/ProductNotFound";
 import { BlogNotFound } from "./pages/Blog/_components/BlogNotFound/BlogNotFound";
+import { BasketView } from "./pages/Basket/Basket";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
             <Route path="/contact-us" element={<Contactus />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/coming-soon" element={<h1>Coming Soon...</h1>} />
+            {/* Basket */}
+            <Route path="/cart" element={<BasketView />}></Route>
             {/* Global 404 */}
             <Route path="/*" element={<NotFoundPage />} />
           </Route>

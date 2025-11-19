@@ -30,7 +30,7 @@ export const ProductStoreSwiper = ({
         className="store-swiper"
         breakpoints={{
           0: {
-            slidesPerView: 1, // موبایل خیلی کوچک
+            slidesPerView: 1,
             spaceBetween: 10,
           },
           480: {

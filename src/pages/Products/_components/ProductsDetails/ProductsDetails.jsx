@@ -5,16 +5,14 @@ import axios from "axios";
 import { Newsletter } from "../../../../components/Newsletter/Newsletter";
 import { ProductsDetailsSwiper } from "./ProductsDetailsSwiper";
 import { Loader } from "../../../../components/Loader/Loader";
-import { useBasketStore } from "../../../../Store/CartStore";
-// import { useBasket } from "../../../../customHook/useBasket";
+import { useBasket } from "../../../../customHook/useBasket";
 
 export const ProductsDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [count, setCount] = useState(0);
   const [shopID, setShopID] = useState(null);
-  // const { addToCart, removeFromCart, deleteProduct } = useBasket();
-  const { addToCart, removeFromCart, deleteProduct } = useBasketStore();
+  const { addToCart } = useBasket();
 
   const handleInc = () => setCount((prev) => prev + 1);
   const handleDec = () => setCount((prev) => (prev <= 0 ? 0 : prev - 1));
@@ -24,7 +22,7 @@ export const ProductsDetails = () => {
     try {
       const response = await axios.get("/data/shops.json");
       const data = response.data.shops;
-      console.log(data);
+      // console.log(data);
 
       let productFound = null;
       let shopIDFound = null;

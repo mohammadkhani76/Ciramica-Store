@@ -2,11 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./ProductStore.css";
 import { ProductStoreSwiper } from "./ProductStoreSwiper";
-import { useBasketStore } from "../../Store/CartStore";
+import { useBasket } from "../../customHook/useBasket";
+// import { useBasketStore } from "../../Store/CartStore";
 
 export const ProductStore = () => {
   const [shops, setShops] = useState([]);
-  const { addToCart } = useBasketStore();
+  // const { addToCart } = useBasketStore();
+  const { addToCart } = useBasket();
 
   async function getProductShop() {
     try {

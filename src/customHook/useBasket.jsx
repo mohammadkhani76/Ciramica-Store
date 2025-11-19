@@ -1,9 +1,10 @@
+import { useBasketStore } from "../Store/CartStore";
 import { useLocalStorage } from "./useLocalStorage";
 
 export const useBasket = () => {
-  let basket = [];
+  const basket = [];
+  const { setBasket } = useBasketStore();
   const { saveToLocalStorage, loadFromLocalStorage } = useLocalStorage("_b");
-
   // Add to cart
   const addToCart = (shopID, productData) => {
     basket = loadFromLocalStorage();
@@ -24,12 +25,12 @@ export const useBasket = () => {
         basket: [productData],
       });
     }
-
+    setBasket(basket);
     saveToLocalStorage(basket);
     console.log("Basket updated:", basket);
   };
 
-  // remove from cart
+  //decrese from cart
   const removeFromCart = (shopID, productData) => {
     basket = loadFromLocalStorage();
     const existingShop = basket.find((shop) => shop.shopID === shopID);
@@ -46,11 +47,12 @@ export const useBasket = () => {
         }
       }
     }
+    setBasket(basket);
 
     saveToLocalStorage(basket);
     console.log("Basket updated:", basket);
   };
-
+  //delete from cart
   const deleteProduct = (shopID, productData) => {
     basket = loadFromLocalStorage();
     const existingShop = basket.find((shop) => shop.shopID === shopID);
@@ -60,15 +62,36 @@ export const useBasket = () => {
         (product) => product.id !== productData.id
       );
     }
-
+    setBasket(basket);
     saveToLocalStorage(basket);
     console.log("Basket updated:", basket);
   };
+
+  // //total count
+  // const basketCount = () => {
+  //   basket = loadFromLocalStorage();
+  //   return basket.reduce(
+  //     (acc, shop) =>
+  //       (acc += shop.basket.reduce((sum, p) => sum + p.quantity, 0)),
+  //     0
+  //   );
+  // };
+  // //totalprice
+  // const basketTotalPrice = () => {
+  //   basket = loadFromLocalStorage();
+  //   return basket.reduce(
+  //     (acc, shop) =>
+  //       (acc += shop.basket.reduce((sum, p) => sum + p.quantity * p.price, 0)),
+  //     0
+  //   );
+  // };
   return {
     addToCart,
     removeFromCart,
     deleteProduct,
+    // basketCount,
     saveToLocalStorage,
+    // basketTotalPrice,
     loadFromLocalStorage,
   };
 };

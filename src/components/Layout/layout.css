@@ -681,6 +681,11 @@ main {
   }
 }
 
+@media screen and (max-width: 400px) {
+  .header-bottom-menu-icon {
+    display: none;
+  }
+}
 @media screen and (max-width: 500px) {
   .header-top-inner {
     padding: 0px;
