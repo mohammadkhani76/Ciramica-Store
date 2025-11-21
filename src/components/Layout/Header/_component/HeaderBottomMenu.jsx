@@ -4,18 +4,12 @@ import { useState } from "react";
 import { SvgArrowDown } from "../../../../assets/icon/SvgArrowDown";
 
 export const HeaderBottomMenu = ({ isMobile }) => {
-  // const [openMenu, setOpenMenu] = useState(false);
   return (
     <>
       <ul className={isMobile ? "mobile-top-menu-first" : "header-buttom-menu"}>
         {headerData.map((item, i) => (
           <li key={i}>
-            <Link
-              to={item.link}
-              // onMouseEnter={() => setOpenMenu((prev) => !prev)}
-            >
-              {item.title}
-            </Link>
+            <Link to={item.link}>{item.title}</Link>
             {item.submenu && (
               <span className="menu-arrow">
                 <SvgArrowDown />

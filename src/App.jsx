@@ -11,9 +11,22 @@ import { ProductsDetails } from "./pages/Products/_components/ProductsDetails/Pr
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { ProductNotFound } from "./pages/Products/_components/ProductsDetails/ProductNotFound/ProductNotFound";
 import { BlogNotFound } from "./pages/Blog/_components/BlogNotFound/BlogNotFound";
-import { BasketView } from "./pages/Basket/Basket";
+import { BasketView } from "./pages/BasketView/BasketView";
+import { useEffect } from "react";
+import { useBasketStore } from "./Store/CartStore";
+import { useLocalStorage } from "./customHook/useLocalStorage";
 
 function App() {
+  const { setBasket } = useBasketStore();
+  const { loadFromLocalStorage } = useLocalStorage("_b");
+
+  useEffect(() => {
+    const loadData = loadFromLocalStorage();
+    // console.log("loadData", loadData);
+    if (loadData.length > 0) {
+      setBasket(loadData);
+    }
+  }, []);
   return (
     <>
       <BrowserRouter>

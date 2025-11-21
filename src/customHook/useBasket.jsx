@@ -1,3 +1,4 @@
+// import { useEffect } from "react";
 import { useBasketStore } from "../Store/CartStore";
 import { useLocalStorage } from "./useLocalStorage";
 
@@ -5,6 +6,7 @@ export const useBasket = () => {
   let basket = [];
   const { setBasket } = useBasketStore();
   const { saveToLocalStorage, loadFromLocalStorage } = useLocalStorage("_b");
+
   // Add to cart
   const addToCart = (shopID, productData) => {
     basket = loadFromLocalStorage();

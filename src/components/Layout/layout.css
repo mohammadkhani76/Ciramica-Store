@@ -138,7 +138,7 @@ main {
   min-width: 16px;
   text-align: center;
   font-weight: 600;
-  pointer-events: none; /* برای جلوگیری از بلاک شدن کلیک */
+  pointer-events: none;
 }
 .basket-modal {
   width: 100%;
@@ -174,6 +174,9 @@ main {
   cursor: pointer;
   border: none;
   background-color: transparent;
+  & svg {
+    color: var(--color-4);
+  }
 }
 .basket-modal-main-empty {
   width: 100%;
@@ -275,21 +278,21 @@ main {
   justify-content: space-between;
 }
 .basket-modal-footer-btn {
-  /* background-color: brown; */
   display: flex;
   gap: 5px;
-  & button {
-    width: 50%;
-    border: none;
-    cursor: pointer;
-    padding: 8px 10px;
-    font-size: 1rem;
-    & a {
-      color: var(--color-1);
-      text-decoration: none;
-    }
-  }
 }
+
+.basket-modal-footer-btn-cart,
+.basket-modal-footer-btn-Checkout {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+  color: var(--color-1);
+  text-decoration: none;
+}
+
 .basket-modal-footer-btn-cart {
   background-color: var(--color-6);
   &:hover {
