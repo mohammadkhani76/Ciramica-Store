@@ -1,15 +1,9 @@
 import { useState } from "react";
 import "./Checkout.css";
+import { Newsletter } from "../../components/Newsletter/Newsletter";
+import { LocationMap } from "./_component/LocationMap";
 export const Checkout = () => {
-  // async function getUserInfo(data) {
-  //   const res = await fetch("", {
-  //     method: "POST",
-  //     headers: { "Context-Type": "application/json" },
-  //     body: JSON.stringify(data),
-  //   });
-  //   const newdata = await res.json();
-  //   setUserdata(newdata);
-  // }
+  const [step, setStep] = useState(1);
   const [userData, setUserdata] = useState({
     name: "",
     email: "",
@@ -19,6 +13,7 @@ export const Checkout = () => {
     address: "",
     zipcode: "",
   });
+  const [location, setLocation] = useState(null);
 
   const handelChange = (e) => {
     setUserdata((prevInfo) => ({
@@ -26,6 +21,7 @@ export const Checkout = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
   const formHandel = (e) => {
     e.preventDefault();
     //
@@ -38,133 +34,193 @@ export const Checkout = () => {
     );
     const zipcodeIsValid = /^\d{4,10}$/.test(userData.zipcode);
     const countryIsValid = userData.country !== "";
-    if (
-      !nameIsValid ||
-      !emailIsValid ||
-      !phoneIsValid ||
-      !cityIsValid ||
-      !addressIsValid ||
-      !zipcodeIsValid ||
-      !countryIsValid
-    ) {
-      alert(" Form is not valid");
-      return;
+    if (step === 1) {
+      if (!nameIsValid || !emailIsValid || !phoneIsValid) {
+        alert("Step 1 form is not valid");
+        return;
+      }
+      setStep(2);
     }
 
-    console.log(" Submitted:", userData);
+    if (step === 2) {
+      if (
+        !cityIsValid ||
+        !addressIsValid ||
+        !zipcodeIsValid ||
+        !countryIsValid
+      ) {
+        alert("Step 2 form is not valid");
+        return;
+      }
+      console.log("Final Submitted:", userData);
+      alert("Form submitted successfully!");
+      // reset form
+      setUserdata({
+        name: "",
+        email: "",
+        phone: "",
+        country: "",
+        city: "",
+        address: "",
+        zipcode: "",
+      });
+
+      // step 1
+      setStep(1);
+    }
   };
   return (
     <>
       <div className="mainContainer container">
         <div className="checkout-wrapper">
           <h1>Customer Details</h1>
-          <form className="checkout-form" onSubmit={formHandel}>
-            <div className="form-group">
-              <label>
-                Full Name
-                <input
-                  type="text"
-                  name={"name"}
-                  placeholder="Your full name"
-                  value={userData.name}
-                  onChange={handelChange}
-                />
-              </label>
-            </div>
+          <div className="checkout">
+            <div className="checkout-progress-container">
+              <div
+                className={`progress-circle ${step >= 1 ? "active" : ""}`}
+                onClick={() => setStep(1)}
+              >
+                Step1
+              </div>
 
-            <div className="form-group">
-              <label>
-                Email
-                <input
-                  type="email"
-                  name={"email"}
-                  placeholder="Email address"
-                  value={userData.email}
-                  onChange={handelChange}
-                />
-              </label>
-            </div>
+              <div
+                className={`progress-line ${step >= 2 ? "active" : ""}`}
+              ></div>
 
-            <div className="form-group">
-              <label>
-                Phone
-                <input
-                  type="text"
-                  name={"phone"}
-                  placeholder="Phone number"
-                  value={userData.phone}
-                  onChange={handelChange}
-                />
-              </label>
+              <div
+                className={`progress-circle ${step >= 2 ? "active" : ""}`}
+                onClick={() => setStep(2)}
+              >
+                Step2
+              </div>
             </div>
+            {step === 1 && (
+              <form className="checkout-form" onSubmit={formHandel}>
+                <div className="form-group">
+                  <label>
+                    Full Name
+                    <input
+                      type="text"
+                      name={"name"}
+                      placeholder="Your full name"
+                      value={userData.name}
+                      onChange={handelChange}
+                    />
+                  </label>
+                </div>
 
-            <div className="form-group">
-              <label>
-                Country
-                <select
-                  name={"country"}
-                  value={userData.country}
-                  onChange={handelChange}
-                >
-                  <option value="" disabled hidden>
-                    select country...
-                  </option>
-                  <option value="iran">Iran</option>
-                  <option value="turkey">Turkey</option>
-                  <option value="uae">UAE</option>
-                  <option value="germany">Germany</option>
-                  <option value="uk">United Kingdom</option>
-                </select>
-              </label>
-            </div>
+                <div className="form-group">
+                  <label>
+                    Email
+                    <input
+                      type="email"
+                      name={"email"}
+                      placeholder="Email address"
+                      value={userData.email}
+                      onChange={handelChange}
+                    />
+                  </label>
+                </div>
 
-            <div className="form-group">
-              <label>
-                City
-                <input
-                  type="text"
-                  name={"city"}
-                  placeholder="City"
-                  value={userData.city}
-                  onChange={handelChange}
-                />
-              </label>
-            </div>
+                <div className="form-group">
+                  <label>
+                    Phone
+                    <input
+                      type="text"
+                      name={"phone"}
+                      placeholder="Phone number"
+                      value={userData.phone}
+                      onChange={handelChange}
+                    />
+                  </label>
+                </div>
+                <div className="form-btn">
+                  <button className="btn active" type="submit">
+                    Next
+                  </button>
+                </div>
+              </form>
+            )}
 
-            <div className="form-group">
-              <label>
-                Address
-                <input
-                  type="text"
-                  name={"address"}
-                  placeholder="Full address"
-                  value={userData.address}
-                  onChange={handelChange}
-                />
-              </label>
-            </div>
+            {step === 2 && (
+              <form className="checkout-form" onSubmit={formHandel}>
+                <div className="form-group">
+                  <label>
+                    Country
+                    <select
+                      name={"country"}
+                      value={userData.country}
+                      onChange={handelChange}
+                    >
+                      <option value="" disabled hidden>
+                        select country...
+                      </option>
+                      <option value="iran">Iran</option>
+                      <option value="turkey">Turkey</option>
+                      <option value="uae">UAE</option>
+                      <option value="germany">Germany</option>
+                      <option value="uk">United Kingdom</option>
+                    </select>
+                  </label>
+                </div>
 
-            <div className="form-group">
-              <label>
-                Zip Code
-                <input
-                  type="text"
-                  name={"zipcode"}
-                  placeholder="Zip Code"
-                  value={userData.zipcode}
-                  onChange={handelChange}
-                />
-              </label>
-            </div>
-            {/* ⭐ دکمه گرفتن لوکیشن */}
-            <div className="form-group">
-              <label>Your Location</label>
-            </div>
-            <button type="submit" className="place-order-btn">
-              Place Order
-            </button>
-          </form>
+                <div className="form-group">
+                  <label>
+                    City
+                    <input
+                      type="text"
+                      name={"city"}
+                      placeholder="City"
+                      value={userData.city}
+                      onChange={handelChange}
+                    />
+                  </label>
+                </div>
+
+                <div className="form-group">
+                  <label>
+                    Address
+                    <input
+                      type="text"
+                      name={"address"}
+                      placeholder="Full address"
+                      value={userData.address}
+                      onChange={handelChange}
+                    />
+                  </label>
+                </div>
+
+                <div className="form-group">
+                  <label>
+                    Zip Code
+                    <input
+                      type="text"
+                      name={"zipcode"}
+                      placeholder="Zip Code"
+                      value={userData.zipcode}
+                      onChange={handelChange}
+                    />
+                  </label>
+                </div>
+
+                <div className="form-group map">
+                  <label>Your Location (Auto Detect):</label>
+                  <LocationMap onLocationSelect={(loc) => setLocation(loc)} />
+                </div>
+                <div className="form-btn">
+                  <button className="btn" onClick={() => setStep(1)}>
+                    Before
+                  </button>
+
+                  <button className="btn active" type="submit">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
         </div>
+        <Newsletter />
       </div>
     </>
   );
