@@ -1,8 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Checkout.css";
 import { Newsletter } from "../../components/Newsletter/Newsletter";
 import { LocationMap } from "./_component/LocationMap";
+import { useLocation, useNavigate } from "react-router";
+import { useBasketStore } from "../../Store/CartStore";
 export const Checkout = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const shopID = location.state?.shopID;
+  console.log(shopID);
+  useEffect(() => {
+    if (!shopID) {
+      navigate("/cart");
+    }
+  }, [shopID, navigate]);
+
+  const { basket } = useBasketStore();
+  const shopBasket =
+    basket.find((shop) => shop.shopID === shopID)?.basket || [];
+
   const [step, setStep] = useState(1);
   const [userData, setUserdata] = useState({
     name: "",
@@ -42,7 +58,7 @@ export const Checkout = () => {
       }
       setStep(2);
     }
-
+    const data = { ...userData, shopBasket };
     if (step === 2) {
       if (
         !cityIsValid ||
@@ -53,7 +69,7 @@ export const Checkout = () => {
         alert("Step 2 form is not valid");
         return;
       }
-      console.log("Final Submitted:", userData);
+      console.log("Final Submitted:", data);
       alert("Form submitted successfully!");
 
       // reset form
@@ -65,6 +81,7 @@ export const Checkout = () => {
         city: "",
         address: "",
         zipcode: "",
+        location: { lat: null, lng: null },
       });
 
       // step 1
