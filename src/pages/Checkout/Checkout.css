@@ -94,6 +94,10 @@
   width: 100%;
   appearance: none;
   -webkit-appearance: none;
+  background-color: var(--color-1);
+  &::placeholder {
+    color: var(--color-6);
+  }
 }
 .form-btn {
   display: flex;
