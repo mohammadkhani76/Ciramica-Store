@@ -14,7 +14,6 @@ export const Checkout = () => {
     zipcode: "",
     location: { lat: null, lng: null },
   });
-  const [location, setLocation] = useState(null);
 
   const handelChange = (e) => {
     setUserdata((prevInfo) => ({
@@ -25,7 +24,7 @@ export const Checkout = () => {
 
   const formHandel = (e) => {
     e.preventDefault();
-    //
+
     const nameIsValid = /^[a-zA-Zآ-ی\s]{3,}$/.test(userData.name);
     const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userData.email);
     const phoneIsValid = /^(09\d{9}|\d{8,15})$/.test(userData.phone);
@@ -35,6 +34,7 @@ export const Checkout = () => {
     );
     const zipcodeIsValid = /^\d{4,10}$/.test(userData.zipcode);
     const countryIsValid = userData.country !== "";
+
     if (step === 1) {
       if (!nameIsValid || !emailIsValid || !phoneIsValid) {
         alert("Step 1 form is not valid");
@@ -55,6 +55,7 @@ export const Checkout = () => {
       }
       console.log("Final Submitted:", userData);
       alert("Form submitted successfully!");
+
       // reset form
       setUserdata({
         name: "",
@@ -89,6 +90,7 @@ export const Checkout = () => {
                 Step2
               </div>
             </div>
+
             {step === 1 && (
               <form className="checkout-form" onSubmit={formHandel}>
                 <div className="form-group">
