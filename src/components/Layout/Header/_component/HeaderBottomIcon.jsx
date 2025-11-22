@@ -102,16 +102,40 @@ export const ModalOverlay = ({
       ) : (
         <div className="basket-modal-main-full">
           <div className="basket-modal-main-full-products">
-            {basket.map((shop) =>
-              shop.basket.map((product) => (
-                <ProductItem
-                  key={product.id}
-                  product={product}
-                  shopID={shop.shopID}
-                  deleteProduct={deleteProduct}
-                />
-              ))
-            )}
+            {basket
+              .filter((shop) => shop.basket.length > 0)
+              .map((shop) => (
+                <div key={shop.shopID} className="shop-group">
+                  <h4>Shop: {shop.shopID}</h4>
+                  <div className="shop-products">
+                    {shop.basket.map((product) => (
+                      <ProductItem
+                        key={product.id}
+                        product={product}
+                        shopID={shop.shopID}
+                        deleteProduct={deleteProduct}
+                      />
+                    ))}
+                  </div>
+
+                  <div className="basket-modal-shop-actions">
+                    <Link
+                      to="/cart"
+                      className="basket-modal-shop-actions-btn-cart"
+                      onClick={() => setShowModal(false)}
+                    >
+                      View Cart
+                    </Link>
+                    <Link
+                      to="/checkout"
+                      className="basket-modal-shop-actions-btn-Checkout"
+                      onClick={() => setShowModal(false)}
+                    >
+                      Checkout
+                    </Link>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       )}
@@ -121,19 +145,6 @@ export const ModalOverlay = ({
           <p>Subtotal:</p>
           <p>{basketTotalPrice} $</p>
         </div>
-
-        <div className="basket-modal-footer-btn">
-          <Link
-            to="/cart"
-            className="basket-modal-footer-btn-cart"
-            onClick={() => setShowModal(false)}
-          >
-            View cart
-          </Link>
-          <Link to="#" className="basket-modal-footer-btn-Checkout">
-            Checkout
-          </Link>
-        </div>
       </div>
     </div>
   );
@@ -142,12 +153,17 @@ export const ModalOverlay = ({
 const ProductItem = ({ product, shopID, deleteProduct }) => (
   <div className="basket-modal-main-full-products-item">
     <div className="basket-modal-products-item-img">
-      <img src={product.image} alt={product.title} />
+      <Link to={`/product/${product.id}`} onClick={() => setShowModal(false)}>
+        <img src={product.image} alt={product.title} />
+      </Link>
     </div>
 
     <div className="basket-modal-products-item-info">
-      <p>shopID: {shopID}</p>
-      <p>{product.title}</p>
+      <p>
+        <Link to={`/product/${product.id}`} onClick={() => setShowModal(false)}>
+          {product.title}
+        </Link>
+      </p>
       <p>
         {product.quantity} × {product.price} $
       </p>

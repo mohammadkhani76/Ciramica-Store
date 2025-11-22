@@ -35,73 +35,97 @@ export const BasketView = () => {
             </p>
           ) : (
             <div className="cart-summery">
-              <div className="table-wrapper">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Product</th>
-                      <th>ShpoID</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {basket.map((shop) =>
-                      shop.basket.map((product) => (
-                        <tr key={product.id}>
-                          <td>
-                            <div className="table-product-wrapper">
-                              <button
-                                onClick={() =>
-                                  deleteProduct(shop.shopID, product)
-                                }
-                              >
-                                <SvgClose />
-                              </button>
-                              <div className="table-product-wrapper-media">
-                                <img src={product.image} alt={product.title} />
-                              </div>
-                              <p>{product.title}</p>
-                            </div>
-                          </td>
-                          <td>{shop.shopID}</td>
-                          <td>{product.price} $</td>
-                          <td>
-                            <div className="table-product-cart">
-                              <button
-                                onClick={() =>
-                                  removeFromCart(shop.shopID, {
-                                    ...product,
-                                    quantity: 1,
-                                  })
-                                }
-                              >
-                                -
-                              </button>
-                              <span>{product.quantity}</span>
-                              <button
-                                onClick={() =>
-                                  addToCart(shop.shopID, {
-                                    ...product,
-                                    quantity: 1,
-                                  })
-                                }
-                              >
-                                +
-                              </button>
-                            </div>
-                          </td>
-                          <td>{product.quantity * product.price} $</td>
-                        </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
-              </div>
-              <div className="cart-summery-total">
-                <p>Subtotal:</p>
-                <p>{totalPrice} $</p>
+              {basket
+                .filter((shop) => shop.basket.length > 0)
+                .map((shop) => (
+                  <div key={shop.shopID} className="shop-Wrapper">
+                    <h2>shop:{shop.shopID}</h2>
+                    <div className="table-wrapper">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {shop.basket.map((product) => (
+                            <tr key={product.id}>
+                              <td>
+                                <div className="table-product-wrapper">
+                                  <button
+                                    onClick={() =>
+                                      deleteProduct(shop.shopID, product)
+                                    }
+                                  >
+                                    <SvgClose />
+                                  </button>
+                                  <div className="table-product-wrapper-media">
+                                    <Link to={`/product/${product.id}`}>
+                                      <img
+                                        src={product.image}
+                                        alt={product.title}
+                                      />
+                                    </Link>
+                                  </div>
+
+                                  <p>
+                                    <Link to={`/product/${product.id}`}>
+                                      {product.title}
+                                    </Link>
+                                  </p>
+                                </div>
+                              </td>
+                              <td>{product.price} $</td>
+                              <td>
+                                <div className="table-product-cart">
+                                  <button
+                                    onClick={() =>
+                                      removeFromCart(shop.shopID, {
+                                        ...product,
+                                        quantity: 1,
+                                      })
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <span>{product.quantity}</span>
+                                  <button
+                                    onClick={() =>
+                                      addToCart(shop.shopID, {
+                                        ...product,
+                                        quantity: 1,
+                                      })
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                              </td>
+                              <td>{product.quantity * product.price} $</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                      <div className="cart-summery-total">
+                        <p>Shop Total:</p>
+                        <p>
+                          {shop.basket.reduce(
+                            (sum, p) => sum + p.price * p.quantity,
+                            0
+                          )}
+                          $
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+              <div className="cart-summery-total main-total">
+                <p>Total:</p>
+                <p>{totalPrice}$</p>
               </div>
               <div className="cart-summery-checkout">
                 <Link to="/checkout" className="cart-checkout">

@@ -1,0 +1,56 @@
+.checkout-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.checkout-form {
+  background-color: var(--color-19);
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+}
+.form-group {
+  width: 100%;
+}
+.form-group label {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.form-group label input,
+.form-group label select {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline-color: var(--color-2);
+  border-color: var(--color-2);
+  caret-color: var(--color-2);
+}
+
+.place-order-btn {
+  width: 40%;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--color-1);
+  font-size: 1rem;
+  background-color: var(--color-2);
+  &:hover {
+    background-color: var(--color-6);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .checkout-form {
+    width: 100%;
+  }
+}

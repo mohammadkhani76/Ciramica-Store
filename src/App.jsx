@@ -15,6 +15,7 @@ import { BasketView } from "./pages/BasketView/BasketView";
 import { useEffect } from "react";
 import { useBasketStore } from "./Store/CartStore";
 import { useLocalStorage } from "./customHook/useLocalStorage";
+import { Checkout } from "./pages/Checkout/Checkout";
 
 function App() {
   const { setBasket } = useBasketStore();
@@ -48,6 +49,9 @@ function App() {
             <Route path="/coming-soon" element={<h1>Coming Soon...</h1>} />
             {/* Basket */}
             <Route path="/cart" element={<BasketView />}></Route>
+            {/* Checkout */}
+            <Route path="/checkout" element={<Checkout />}></Route>
+
             {/* Global 404 */}
             <Route path="/*" element={<NotFoundPage />} />
           </Route>

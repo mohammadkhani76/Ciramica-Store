@@ -14,6 +14,9 @@
 .cart-summery {
   background-color: var(--color-1);
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .table-wrapper {
@@ -36,7 +39,7 @@
   padding: 12px;
   text-align: center;
 }
-.table-wrapper table tbody tr {
+.table-wrapper table tbody tr:not(:last-child) {
   border-bottom: 1px solid var(--color-17);
 }
 .table-product-wrapper {
@@ -44,6 +47,13 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
+}
+.table-product-wrapper p a {
+  text-decoration: none;
+  color: var(--color-4);
+}
+.table-product-wrapper p:hover a {
+  color: var(--color-2);
 }
 .table-product-wrapper-media {
   width: 100px;
@@ -107,6 +117,9 @@
   padding: 15px;
   font-weight: bold;
   font-size: 1.5rem;
+}
+.main-total {
+  background-color: var(--color-19);
 }
 .cart-summery-total :last-child {
   color: var(--color-2);
