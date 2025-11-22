@@ -13,18 +13,6 @@ export const BasketView = () => {
   // بررسی اینکه آیا تمام فروشگاه‌ها خالی هستند
   const isCartEmpty = basket.every((shop) => shop.basket.length === 0);
 
-  const { totalPrice } = useMemo(() => {
-    return basket.reduce(
-      (acc, shop) => {
-        shop.basket.forEach((p) => {
-          acc.totalPrice += p.quantity * p.price;
-        });
-        return acc;
-      },
-      { totalPrice: 0 }
-    );
-  }, [basket]);
-
   return (
     <>
       <div className="mainContainer container">
@@ -119,19 +107,14 @@ export const BasketView = () => {
                           $
                         </p>
                       </div>
+                      <div className="cart-summery-checkout">
+                        <Link to="/checkout" className="cart-checkout">
+                          Checkout
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 ))}
-
-              <div className="cart-summery-total main-total">
-                <p>Total:</p>
-                <p>{totalPrice}$</p>
-              </div>
-              <div className="cart-summery-checkout">
-                <Link to="/checkout" className="cart-checkout">
-                  Checkout
-                </Link>
-              </div>
             </div>
           )}
         </div>
