@@ -12,6 +12,7 @@ export const Checkout = () => {
     city: "",
     address: "",
     zipcode: "",
+    location: { lat: null, lng: null },
   });
   const [location, setLocation] = useState(null);
 
@@ -76,10 +77,7 @@ export const Checkout = () => {
           <h1>Customer Details</h1>
           <div className="checkout">
             <div className="checkout-progress-container">
-              <div
-                className={`progress-circle ${step >= 1 ? "active" : ""}`}
-                onClick={() => setStep(1)}
-              >
+              <div className={`progress-circle ${step >= 1 ? "active" : ""}`}>
                 Step1
               </div>
 
@@ -87,10 +85,7 @@ export const Checkout = () => {
                 className={`progress-line ${step >= 2 ? "active" : ""}`}
               ></div>
 
-              <div
-                className={`progress-circle ${step >= 2 ? "active" : ""}`}
-                onClick={() => setStep(2)}
-              >
+              <div className={`progress-circle ${step >= 2 ? "active" : ""}`}>
                 Step2
               </div>
             </div>
@@ -205,7 +200,11 @@ export const Checkout = () => {
 
                 <div className="form-group map">
                   <label>Your Location (Auto Detect):</label>
-                  <LocationMap onLocationSelect={(loc) => setLocation(loc)} />
+                  <LocationMap
+                    onLocationSelect={(loc) =>
+                      setUserdata((prev) => ({ ...prev, location: loc }))
+                    }
+                  />
                 </div>
                 <div className="form-btn">
                   <button className="btn" onClick={() => setStep(1)}>
