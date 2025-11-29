@@ -68,11 +68,18 @@ export const useBasket = () => {
     saveToLocalStorage(basket);
     console.log("Basket updated:", basket);
   };
-
+  const removeShopBasket = (shopID) => {
+    basket = loadFromLocalStorage();
+    basket = basket.filter((shop) => shop.shopID !== Number(shopID));
+    setBasket(basket);
+    saveToLocalStorage(basket);
+    console.log("Basket updated:", basket);
+  };
   return {
     addToCart,
     removeFromCart,
     deleteProduct,
+    removeShopBasket,
     saveToLocalStorage,
     loadFromLocalStorage,
   };

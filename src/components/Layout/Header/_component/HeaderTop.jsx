@@ -17,13 +17,15 @@ export const HeaderTop = () => {
   );
 };
 
-export const HeaderTopMenu = ({ isMobile }) => {
+export const HeaderTopMenu = ({ isMobile, setIsOpenMenu }) => {
   return (
     <>
       <ul className={isMobile ? "mobile-top-menu-second" : "header-top-menu"}>
         {menuTop.map((item, index) => (
           <li key={index}>
-            <Link to={item.link}>{item.title}</Link>
+            <Link to={item.link} onClick={() => setIsOpenMenu(false)}>
+              {item.title}
+            </Link>
           </li>
         ))}
       </ul>

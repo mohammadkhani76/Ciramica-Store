@@ -127,7 +127,7 @@ export const ModalOverlay = ({
                       View Cart
                     </Link>
                     <Link
-                      to="/checkout"
+                      to={`/checkout/${shop.shopID}`}
                       className="basket-modal-shop-actions-btn-Checkout"
                       onClick={() => setShowModal(false)}
                     >

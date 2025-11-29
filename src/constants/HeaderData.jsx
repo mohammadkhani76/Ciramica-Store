@@ -9,7 +9,7 @@ import shipPic from "./../assets/media/HomeMedia/ProductCategoryMedia/cat-2-1.jp
 export const menuTop = [
   {
     title: "About Us",
-    link: "#",
+    link: "/",
   },
   {
     title: "Blog",
@@ -17,11 +17,11 @@ export const menuTop = [
   },
   {
     title: "Contact Us",
-    link: "#",
+    link: "/",
   },
   {
     title: "FAQs",
-    link: "#",
+    link: "/",
   },
 ];
 
@@ -95,11 +95,11 @@ export const headerData = [
   },
   {
     title: "Top deals",
-    link: "#",
+    link: "/",
   },
   {
     title: "Elements",
-    link: "#",
+    link: "/",
   },
 ];
 export const headerDataIcon = [

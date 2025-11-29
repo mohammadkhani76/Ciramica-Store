@@ -1,23 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Checkout.css";
 import { Newsletter } from "../../components/Newsletter/Newsletter";
 import { LocationMap } from "./_component/LocationMap";
-import { useLocation, useNavigate } from "react-router";
+import { useParams } from "react-router";
 import { useBasketStore } from "../../Store/CartStore";
+import { useLocalStorage } from "../../customHook/useLocalStorage";
+import { useBasket } from "../../customHook/useBasket";
 export const Checkout = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const shopID = location.state?.shopID;
-  console.log(shopID);
-  useEffect(() => {
-    if (!shopID) {
-      navigate("/cart");
-    }
-  }, [shopID, navigate]);
-
+  const { saveToLocalStorage, loadFromLocalStorage } =
+    useLocalStorage("orders");
+  const { removeShopBasket } = useBasket();
+  const { id } = useParams();
   const { basket } = useBasketStore();
+
   const shopBasket =
-    basket.find((shop) => shop.shopID === shopID)?.basket || [];
+    basket.find((shop) => shop.shopID === Number(id))?.basket || [];
 
   const [step, setStep] = useState(1);
   const [userData, setUserdata] = useState({
@@ -58,7 +55,14 @@ export const Checkout = () => {
       }
       setStep(2);
     }
-    const data = { ...userData, shopBasket };
+    const data = {
+      user: userData,
+      products: shopBasket,
+      shopID: Number(id),
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    };
+
     if (step === 2) {
       if (
         !cityIsValid ||
@@ -69,9 +73,11 @@ export const Checkout = () => {
         alert("Step 2 form is not valid");
         return;
       }
-      console.log("Final Submitted:", data);
+      const Orders = [data];
+      console.log(Orders);
+      saveToLocalStorage(Orders);
       alert("Form submitted successfully!");
-
+      removeShopBasket(Number(id));
       // reset form
       setUserdata({
         name: "",
@@ -121,6 +127,7 @@ export const Checkout = () => {
                       onChange={handelChange}
                     />
                   </label>
+                  {/* <p>error</p> */}
                 </div>
 
                 <div className="form-group">

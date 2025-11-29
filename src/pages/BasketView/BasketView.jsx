@@ -109,9 +109,8 @@ export const BasketView = () => {
                       </div>
                       <div className="cart-summery-checkout">
                         <Link
-                          to="/checkout"
+                          to={`/checkout/${shop.shopID}`}
                           className="cart-checkout"
-                          state={{ shopID: shop.shopID }}
                         >
                           Checkout
                         </Link>

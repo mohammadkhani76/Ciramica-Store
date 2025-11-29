@@ -69,8 +69,14 @@ export const HeaderBottom = () => {
                   </div>
                 </div>
                 <div className="mobile-top-menu-wrapper">
-                  <HeaderBottomMenu isMobile={isMobile} />
-                  <HeaderTopMenu isMobile={isMobile} />
+                  <HeaderBottomMenu
+                    isMobile={isMobile}
+                    setIsOpenMenu={setIsOpenMenu}
+                  />
+                  <HeaderTopMenu
+                    isMobile={isMobile}
+                    setIsOpenMenu={setIsOpenMenu}
+                  />
                   <HeaderBottomIcon isMobile={isMobile} />
                 </div>
               </div>

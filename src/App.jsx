@@ -50,7 +50,7 @@ function App() {
             {/* Basket */}
             <Route path="/cart" element={<BasketView />}></Route>
             {/* Checkout */}
-            <Route path="/checkout" element={<Checkout />}></Route>
+            <Route path="/checkout/:id" element={<Checkout />}></Route>
 
             {/* Global 404 */}
             <Route path="/*" element={<NotFoundPage />} />
