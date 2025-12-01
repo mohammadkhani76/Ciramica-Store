@@ -5,13 +5,15 @@ import { SvgFavorite } from "../../../../assets/icon/SvgFavorite";
 import { SvgCart } from "../../../../assets/icon/SvgCart";
 import { SvgClose } from "../../../../assets/icon/SvgClose";
 import { useMemo, useState } from "react";
-import { Link } from "react-router";
 import { useBasket } from "../../../../customHook/useBasket";
+import { SearchModal } from "./_component/search/searchModal";
+import { BasketModal } from "./_component/basket/BasketModal";
 
 export const HeaderBottomIcon = ({ isMobile }) => {
   const { basket } = useBasketStore();
   const { deleteProduct } = useBasket();
-  const [showModal, setShowModal] = useState(false);
+  const [showBasketModal, setshowBasketModal] = useState(false);
+  const [showSearchModal, setShowSearchModal] = useState(false);
 
   const { count, totalPrice } = useMemo(() => {
     return basket.reduce(
@@ -34,7 +36,7 @@ export const HeaderBottomIcon = ({ isMobile }) => {
         }
       >
         <li>
-          <button>
+          <button onClick={() => setShowSearchModal((prev) => !prev)}>
             <SvgSearch />
           </button>
         </li>
@@ -50,129 +52,30 @@ export const HeaderBottomIcon = ({ isMobile }) => {
           </button>
         </li>
         <li>
-          <button onClick={() => setShowModal((p) => !p)}>
+          <button onClick={() => setshowBasketModal((prev) => !prev)}>
             <SvgCart />
             <span className="badge">{count}</span>
           </button>
         </li>
       </ul>
 
-      {showModal && (
-        <div className="basket-modal" onClick={() => setShowModal(false)}>
-          <ModalOverlay
-            setShowModal={setShowModal}
-            count={count}
-            deleteProduct={deleteProduct}
-            basket={basket}
-            basketTotalPrice={totalPrice}
-          />
-        </div>
+      {showBasketModal && (
+        <BasketModal
+          showBasketModal={showBasketModal}
+          setshowBasketModal={setshowBasketModal}
+          count={count}
+          totalPrice={totalPrice}
+          deleteProduct={deleteProduct}
+          basket={basket}
+        />
+      )}
+
+      {showSearchModal && (
+        <SearchModal
+          showSearchModal={showSearchModal}
+          setShowSearchModal={setShowSearchModal}
+        />
       )}
     </>
   );
 };
-
-export const ModalOverlay = ({
-  setShowModal,
-  count,
-  deleteProduct,
-  basket,
-  basketTotalPrice,
-}) => {
-  return (
-    <div className="basket-modal-overlay" onClick={(e) => e.stopPropagation()}>
-      <div className="basket-modal-header">
-        <p>Shopping Cart</p>
-        <button onClick={() => setShowModal(false)}>
-          <SvgClose />
-        </button>
-      </div>
-
-      {count === 0 ? (
-        <div className="basket-modal-main-empty">
-          <div className="basket-modal-main-empty-info">
-            <h3>Your cart is empty</h3>
-            <p>No items in your cart. Go on, fill it up!</p>
-
-            <button onClick={() => setShowModal(false)}>
-              <Link to={"/product"}>Start Shopping Now</Link>
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="basket-modal-main-full">
-          <div className="basket-modal-main-full-products">
-            {basket
-              .filter((shop) => shop.basket.length > 0)
-              .map((shop) => (
-                <div key={shop.shopID} className="shop-group">
-                  <h4>Shop: {shop.shopID}</h4>
-                  <div className="shop-products">
-                    {shop.basket.map((product) => (
-                      <ProductItem
-                        key={product.id}
-                        product={product}
-                        shopID={shop.shopID}
-                        deleteProduct={deleteProduct}
-                      />
-                    ))}
-                  </div>
-
-                  <div className="basket-modal-shop-actions">
-                    <Link
-                      to="/cart"
-                      className="basket-modal-shop-actions-btn-cart"
-                      onClick={() => setShowModal(false)}
-                    >
-                      View Cart
-                    </Link>
-                    <Link
-                      to={`/checkout/${shop.shopID}`}
-                      className="basket-modal-shop-actions-btn-Checkout"
-                      onClick={() => setShowModal(false)}
-                    >
-                      Checkout
-                    </Link>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </div>
-      )}
-
-      <div className="basket-modal-footer">
-        <div className="basket-modal-footer-total">
-          <p>Subtotal:</p>
-          <p>{basketTotalPrice} $</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ProductItem = ({ product, shopID, deleteProduct }) => (
-  <div className="basket-modal-main-full-products-item">
-    <div className="basket-modal-products-item-img">
-      <Link to={`/product/${product.id}`} onClick={() => setShowModal(false)}>
-        <img src={product.image} alt={product.title} />
-      </Link>
-    </div>
-
-    <div className="basket-modal-products-item-info">
-      <p>
-        <Link to={`/product/${product.id}`} onClick={() => setShowModal(false)}>
-          {product.title}
-        </Link>
-      </p>
-      <p>
-        {product.quantity} × {product.price} $
-      </p>
-    </div>
-
-    <div className="basket-modal-products-item-delete">
-      <button onClick={() => deleteProduct(shopID, product)}>
-        <SvgClose />
-      </button>
-    </div>
-  </div>
-);
