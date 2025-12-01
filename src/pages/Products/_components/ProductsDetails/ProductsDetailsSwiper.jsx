@@ -20,7 +20,7 @@ export const ProductsDetailsSwiper = ({ images, alt }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <>
-      {/* عکس اصلی */}
+      {/* img  */}
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
@@ -38,8 +38,8 @@ export const ProductsDetailsSwiper = ({ images, alt }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* بندانگشتی‌ها */}
 
+      {/* thumb */}
       <Swiper
         onSwiper={setThumbsSwiper}
         spaceBetween={10}

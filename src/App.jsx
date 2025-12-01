@@ -16,7 +16,11 @@ import { useEffect } from "react";
 import { useBasketStore } from "./Store/CartStore";
 import { useLocalStorage } from "./customHook/useLocalStorage";
 import { Checkout } from "./pages/Checkout/Checkout";
-
+import { AboutUs } from "./pages/AboutUs/AboutUs";
+import { Faqs } from "./pages/Faqs/Faqs";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ComingSoon } from "./pages/ComingSoon/ComingSoon";
 function App() {
   const { setBasket } = useBasketStore();
   const { loadFromLocalStorage } = useLocalStorage("_b");
@@ -30,6 +34,15 @@ function App() {
   }, []);
   return (
     <>
+      <ToastContainer
+        position="top-left"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
@@ -43,15 +56,20 @@ function App() {
             <Route path="/product" element={<Products />} />
             <Route path="/product/:id" element={<ProductsDetails />} />
             <Route path="/product/*" element={<ProductNotFound />} />
-            {/* Other Pages */}
-            <Route path="/contact-us" element={<Contactus />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/coming-soon" element={<h1>Coming Soon...</h1>} />
             {/* Basket */}
             <Route path="/cart" element={<BasketView />}></Route>
             {/* Checkout */}
             <Route path="/checkout/:id" element={<Checkout />}></Route>
-
+            {/* AboutUs */}
+            <Route path="/about-us" element={<AboutUs />}></Route>
+            {/* Contactus */}
+            <Route path="/contact-us" element={<Contactus />}></Route>
+            {/* shop */}
+            <Route path="/shop" element={<Shop />} />
+            {/* FAQ */}
+            <Route path="/faqs" element={<Faqs />} />
+            {/* coming soon */}
+            <Route path="/coming-soon" element={<ComingSoon />} />
             {/* Global 404 */}
             <Route path="/*" element={<NotFoundPage />} />
           </Route>

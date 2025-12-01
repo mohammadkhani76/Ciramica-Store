@@ -74,13 +74,13 @@
   height: auto;
 }
 
-/* حذف فلش‌های پیش‌فرض Swiper */
+/*remove Swiper arrow  */
 .blog-swiper .swiper-button-prev::after,
 .blog-swiper .swiper-button-next::after {
   content: "";
 }
 
-/* دکمه‌ها */
+/* button */
 .blog-swiper .swiper-button-prev,
 .blog-swiper .swiper-button-next {
   background-color: var(--color-14);
@@ -93,7 +93,7 @@
   transition: all 0.3s ease;
 }
 
-/* هاور */
+/* hover */
 .blog-swiper .swiper-button-prev:hover,
 .blog-swiper .swiper-button-next:hover {
   background-color: var(--color-2);
@@ -101,21 +101,21 @@
   transform: scale(1.1);
 }
 
-/* کلیک */
+/* click */
 .blog-swiper .swiper-button-prev:active,
 .blog-swiper .swiper-button-next:active {
   background-color: var(--color-2);
   transform: scale(0.95);
 }
 
-/* آیکن‌های سفارشی داخل دکمه‌ها */
+/* svg */
 .blog-swiper .swiper-button-prev svg,
 .blog-swiper .swiper-button-next svg {
   color: var(--color-10);
   transition: color 0.3s ease;
 }
 
-/* تغییر رنگ آیکن هنگام هاور یا کلیک */
+/* hover svg */
 .blog-swiper .swiper-button-prev:hover svg,
 .blog-swiper .swiper-button-next:hover svg,
 .blog-swiper .swiper-button-prev:active svg,

@@ -1,99 +1,14 @@
-import { useState } from "react";
 import "./Checkout.css";
 import { Newsletter } from "../../components/Newsletter/Newsletter";
-import { LocationMap } from "./_component/LocationMap";
 import { useParams } from "react-router";
-import { useBasketStore } from "../../Store/CartStore";
-import { useLocalStorage } from "../../customHook/useLocalStorage";
-import { useBasket } from "../../customHook/useBasket";
+import { useCheckout } from "../../customHook/useCheckout";
+import { CheckoutStep1 } from "./_component/CheckoutStep1";
+import { CheckoutStep2 } from "./_component/CheckoutStep2";
+
 export const Checkout = () => {
-  const { saveToLocalStorage, loadFromLocalStorage } =
-    useLocalStorage("orders");
-  const { removeShopBasket } = useBasket();
   const { id } = useParams();
-  const { basket } = useBasketStore();
-
-  const shopBasket =
-    basket.find((shop) => shop.shopID === Number(id))?.basket || [];
-
-  const [step, setStep] = useState(1);
-  const [userData, setUserdata] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    country: "",
-    city: "",
-    address: "",
-    zipcode: "",
-    location: { lat: null, lng: null },
-  });
-
-  const handelChange = (e) => {
-    setUserdata((prevInfo) => ({
-      ...prevInfo,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const formHandel = (e) => {
-    e.preventDefault();
-
-    const nameIsValid = /^[a-zA-Zآ-ی\s]{3,}$/.test(userData.name);
-    const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userData.email);
-    const phoneIsValid = /^(09\d{9}|\d{8,15})$/.test(userData.phone);
-    const cityIsValid = /^[a-zA-Zآ-ی\s]{3,}$/.test(userData.city);
-    const addressIsValid = /^[a-zA-Z0-9آ-ی\s\.,\-]{10,}$/.test(
-      userData.address
-    );
-    const zipcodeIsValid = /^\d{4,10}$/.test(userData.zipcode);
-    const countryIsValid = userData.country !== "";
-
-    if (step === 1) {
-      if (!nameIsValid || !emailIsValid || !phoneIsValid) {
-        alert("Step 1 form is not valid");
-        return;
-      }
-      setStep(2);
-    }
-    const data = {
-      user: userData,
-      products: shopBasket,
-      shopID: Number(id),
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-    };
-
-    if (step === 2) {
-      if (
-        !cityIsValid ||
-        !addressIsValid ||
-        !zipcodeIsValid ||
-        !countryIsValid
-      ) {
-        alert("Step 2 form is not valid");
-        return;
-      }
-      const Orders = [data];
-      console.log(Orders);
-      saveToLocalStorage(Orders);
-      alert("Form submitted successfully!");
-      removeShopBasket(Number(id));
-      // reset form
-      setUserdata({
-        name: "",
-        email: "",
-        phone: "",
-        country: "",
-        city: "",
-        address: "",
-        zipcode: "",
-        location: { lat: null, lng: null },
-      });
-
-      // step 1
-      setStep(1);
-    }
-  };
+  const { step, setStep, register, handleSubmit, errors, onForm, setLocation } =
+    useCheckout(id);
   return (
     <>
       <div className="mainContainer container">
@@ -104,144 +19,32 @@ export const Checkout = () => {
               <div className={`progress-circle ${step >= 1 ? "active" : ""}`}>
                 Step1
               </div>
-
               <div
                 className={`progress-line ${step >= 2 ? "active" : ""}`}
               ></div>
-
               <div className={`progress-circle ${step >= 2 ? "active" : ""}`}>
                 Step2
               </div>
             </div>
 
             {step === 1 && (
-              <form className="checkout-form" onSubmit={formHandel}>
-                <div className="form-group">
-                  <label>
-                    Full Name
-                    <input
-                      type="text"
-                      name={"name"}
-                      placeholder="Your full name"
-                      value={userData.name}
-                      onChange={handelChange}
-                    />
-                  </label>
-                  {/* <p>error</p> */}
-                </div>
-
-                <div className="form-group">
-                  <label>
-                    Email
-                    <input
-                      type="email"
-                      name={"email"}
-                      placeholder="Email address"
-                      value={userData.email}
-                      onChange={handelChange}
-                    />
-                  </label>
-                </div>
-
-                <div className="form-group">
-                  <label>
-                    Phone
-                    <input
-                      type="text"
-                      name={"phone"}
-                      placeholder="Phone number"
-                      value={userData.phone}
-                      onChange={handelChange}
-                    />
-                  </label>
-                </div>
-                <div className="form-btn">
-                  <button className="btn active" type="submit">
-                    Next
-                  </button>
-                </div>
-              </form>
+              <CheckoutStep1
+                register={register}
+                handleSubmit={handleSubmit}
+                errors={errors}
+                onSubmit={handleSubmit(onForm)}
+              />
             )}
 
             {step === 2 && (
-              <form className="checkout-form" onSubmit={formHandel}>
-                <div className="form-group">
-                  <label>
-                    Country
-                    <select
-                      name={"country"}
-                      value={userData.country}
-                      onChange={handelChange}
-                    >
-                      <option value="" disabled hidden>
-                        select country...
-                      </option>
-                      <option value="iran">Iran</option>
-                      <option value="turkey">Turkey</option>
-                      <option value="uae">UAE</option>
-                      <option value="germany">Germany</option>
-                      <option value="uk">United Kingdom</option>
-                    </select>
-                  </label>
-                </div>
-
-                <div className="form-group">
-                  <label>
-                    City
-                    <input
-                      type="text"
-                      name={"city"}
-                      placeholder="City"
-                      value={userData.city}
-                      onChange={handelChange}
-                    />
-                  </label>
-                </div>
-
-                <div className="form-group">
-                  <label>
-                    Address
-                    <input
-                      type="text"
-                      name={"address"}
-                      placeholder="Full address"
-                      value={userData.address}
-                      onChange={handelChange}
-                    />
-                  </label>
-                </div>
-
-                <div className="form-group">
-                  <label>
-                    Zip Code
-                    <input
-                      type="text"
-                      name={"zipcode"}
-                      placeholder="Zip Code"
-                      value={userData.zipcode}
-                      onChange={handelChange}
-                    />
-                  </label>
-                </div>
-
-                <div className="form-group map">
-                  <label>Your Location (Auto Detect):</label>
-                  <LocationMap
-                    onLocationSelect={(loc) =>
-                      setUserdata((prev) => ({ ...prev, location: loc }))
-                    }
-                  />
-                </div>
-                <div className="form-btn">
-                  <button className="btn" onClick={() => setStep(1)}>
-                    Before
-                  </button>
-
-                  <button className="btn active" type="submit">
-                    Submit
-                  </button>
-                </div>
-              </form>
+              <CheckoutStep2
+                register={register}
+                handleSubmit={handleSubmit}
+                errors={errors}
+                onSubmit={handleSubmit(onForm)}
+                setStep={setStep}
+                setLocation={setLocation}
+              />
             )}
           </div>
         </div>

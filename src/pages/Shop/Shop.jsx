@@ -1,3 +1,4 @@
+import { Newsletter } from "../../components/Newsletter/Newsletter";
 import "./shop.css";
 export const Shop = () => {
   return (
@@ -41,6 +42,7 @@ export const Shop = () => {
           helps reduce waste and contributes to a cleaner planet.
         </p>
       </section>
+      <Newsletter />
     </div>
   );
 };

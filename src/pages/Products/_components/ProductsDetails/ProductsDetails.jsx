@@ -6,23 +6,24 @@ import { Newsletter } from "../../../../components/Newsletter/Newsletter";
 import { ProductsDetailsSwiper } from "./ProductsDetailsSwiper";
 import { Loader } from "../../../../components/Loader/Loader";
 import { useBasket } from "../../../../customHook/useBasket";
+import { Faq } from "../../../../components/Faq/Faq";
+import { useBasketStore } from "../../../../Store/CartStore";
 
 export const ProductsDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const [count, setCount] = useState(0);
   const [shopID, setShopID] = useState(null);
-  const { addToCart } = useBasket();
-
-  const handleInc = () => setCount((prev) => prev + 1);
-  const handleDec = () => setCount((prev) => (prev <= 0 ? 0 : prev - 1));
+  const { addToCart, removeFromCart } = useBasket();
+  const { basket } = useBasketStore();
+  const shopInBasket = basket.find((shop) => shop.shopID === shopID);
+  const productInBasket = shopInBasket?.basket.find((p) => p.id === id);
+  const quantityInBasket = productInBasket?.quantity || 0;
 
   // Fetch product
   const getProduct = async () => {
     try {
       const response = await axios.get("/data/shops.json");
       const data = response.data.shops;
-      // console.log(data);
 
       let productFound = null;
       let shopIDFound = null;
@@ -55,78 +56,78 @@ export const ProductsDetails = () => {
   return (
     <div className="container mainContainer">
       <div className="details-product-wrapper">
-        <div className="details-product-img">
-          <ProductsDetailsSwiper
-            images={[
-              product.imageFront,
-              product.imageBack,
-              product.imageGallery1,
-              product.imageGallery2,
-            ]}
-            alt={product.title}
-          />
-        </div>
+        <div className="details-product">
+          <div className="details-product-img">
+            <ProductsDetailsSwiper
+              images={[
+                product.imageFront,
+                product.imageBack,
+                product.imageGallery1,
+                product.imageGallery2,
+              ]}
+              alt={product.title}
+            />
+          </div>
 
-        <div className="details-product-info">
-          <h2>{product.title}</h2>
-          <p>Code: {id}</p>
-          <p className="details-product-discount">
-            {product.discountPrice ? (
-              <>
-                <del>{product.price} $</del>
-                <ins>{product.discountPrice} $</ins>
-              </>
-            ) : (
-              <ins>{product.price} $</ins>
-            )}
-          </p>
-          <p>{product.description}</p>
+          <div className="details-product-info">
+            <h2>{product.title}</h2>
+            <p>Code: {id}</p>
+            <p className="details-product-discount">
+              {product.discountPrice ? (
+                <>
+                  <del>{product.price} $</del>
+                  <ins>{product.discountPrice} $</ins>
+                </>
+              ) : (
+                <ins>{product.price} $</ins>
+              )}
+            </p>
+            <p>{product.description}</p>
 
-          <div className="details-product-cart-wrapper">
-            <div className="details-product-cart">
-              <button onClick={handleDec}>-</button>
-              <span>{count}</span>
-              <button onClick={handleInc}>+</button>
+            <div className="details-product-cart-wrapper">
+              <div className="details-product-cart">
+                <button
+                  onClick={() =>
+                    removeFromCart(shopID, { id: product.id, quantity: 1 })
+                  }
+                >
+                  -
+                </button>
+                <span>{quantityInBasket}</span>
+                <button
+                  onClick={() =>
+                    addToCart(shopID, {
+                      id: product.id,
+                      title: product.title,
+                      price: product.discountPrice || product.price,
+                      quantity: 1,
+                      image: product.imageFront,
+                    })
+                  }
+                >
+                  +
+                </button>
+              </div>
+              <button
+                className="details-product-add"
+                onClick={() =>
+                  addToCart(shopID, {
+                    id: product.id,
+                    title: product.title,
+                    price: product.discountPrice || product.price,
+                    quantity: 1,
+                    image: product.imageFront,
+                  })
+                }
+              >
+                Add To Cart
+              </button>
             </div>
-            <button
-              className="details-product-add"
-              onClick={() =>
-                addToCart(shopID, {
-                  id: product.id,
-                  title: product.title,
-                  price: product.discountPrice || product.price,
-                  quantity: count || 1,
-                  image: product.imageFront,
-                })
-              }
-            >
-              Add To Cart
-            </button>
-
-            {/* <button
-              className="details-product-add"
-              onClick={() =>
-                removeFromCart(shopID, {
-                  id: product.id,
-                  quantity: count || 1,
-                })
-              }
-            >
-              removed From Cart
-            </button>
-            <button
-              className="details-product-add"
-              onClick={() =>
-                deleteProduct(shopID, {
-                  id: product.id,
-                })
-              }
-            >
-              delete item
-            </button> */}
           </div>
         </div>
+        <Faq />
       </div>
+
       <Newsletter />
     </div>
   );

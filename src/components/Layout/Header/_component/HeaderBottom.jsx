@@ -53,7 +53,6 @@ export const HeaderBottom = () => {
             />
             <SvgLogo />
           </div>
-          {/*  فقط در حالت موبایل و باز بودن منو نمایش داده شود */}
           {isMobile && isopenMenu && (
             <div className="modal" onClick={() => setIsOpenMenu(false)}>
               <div
@@ -82,12 +81,18 @@ export const HeaderBottom = () => {
               </div>
             </div>
           )}
-          <nav className="header-bottom-details-menu">
-            <HeaderBottomMenu />
-          </nav>
+
+          {!isMobile && (
+            <nav className="header-bottom-details-menu">
+              <HeaderBottomMenu
+                isMobile={false}
+                setIsOpenMenu={setIsOpenMenu}
+              />
+            </nav>
+          )}
 
           <nav className="header-bottom-details-icon">
-            <HeaderBottomIcon />
+            <HeaderBottomIcon isMobile={isMobile} />
           </nav>
         </div>
       </div>

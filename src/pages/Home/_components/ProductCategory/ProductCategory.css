@@ -58,7 +58,7 @@
   font-weight: bold;
   color: var(--color-10);
 }
-/* اسکرول افقی */
+/* scroll */
 .product-category-wrapper::-webkit-scrollbar {
   height: 8px;
 }

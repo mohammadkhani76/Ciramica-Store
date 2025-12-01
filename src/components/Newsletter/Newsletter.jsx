@@ -1,4 +1,5 @@
-import "./Newsletter.css";
+import { NewsletterForm } from "./_component/NewsletterForm";
+
 export const Newsletter = () => {
   return (
     <>
@@ -9,17 +10,7 @@ export const Newsletter = () => {
             Subscribe to our latest newsletter to get news about special
             discounts and upcoming sales
           </p>
-          <form className="newsletter-item-form">
-            <label htmlFor="newsletter">
-              <input
-                type="email"
-                name="email"
-                id="newsletter"
-                placeholder="Email"
-              />
-            </label>
-            <button type="submit">Subscribe</button>
-          </form>
+          <NewsletterForm />
         </div>
       </div>
     </>

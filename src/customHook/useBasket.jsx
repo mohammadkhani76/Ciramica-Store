@@ -1,6 +1,7 @@
 // import { useEffect } from "react";
 import { useBasketStore } from "../Store/CartStore";
 import { useLocalStorage } from "./useLocalStorage";
+import { toast } from "react-toastify";
 
 export const useBasket = () => {
   let basket = [];
@@ -18,14 +19,17 @@ export const useBasket = () => {
       );
       if (existingProduct) {
         existingProduct.quantity += productData.quantity;
+        toast.info(`${productData.title} quantity increased`);
       } else {
         existingShop.basket.push(productData);
+        toast.success(`${productData.title} added to cart!`);
       }
     } else {
       basket.push({
         shopID: shopID,
         basket: [productData],
       });
+      toast.success(`${productData.title} added to cart`);
     }
     setBasket(basket);
     saveToLocalStorage(basket);
@@ -43,10 +47,13 @@ export const useBasket = () => {
       );
       if (existingProduct) {
         existingProduct.quantity -= productData.quantity;
+
         if (existingProduct.quantity <= 0) {
           deleteProduct(shopID, productData);
+
           return;
         }
+        toast.info(`${productData.title} quantity decreased`);
       }
     }
     setBasket(basket);
@@ -63,6 +70,7 @@ export const useBasket = () => {
       existingShop.basket = existingShop.basket.filter(
         (product) => product.id !== productData.id
       );
+      toast.error(`${productData.title} removed from cart`);
     }
     setBasket(basket);
     saveToLocalStorage(basket);

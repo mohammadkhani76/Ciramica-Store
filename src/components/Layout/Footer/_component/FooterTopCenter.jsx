@@ -10,7 +10,6 @@ export const FooterTopCenter = () => {
             <ul>
               {section.list.map((item, i) => (
                 <li key={i}>
-                  {/* <a href="#">{item.name}</a> */}
                   <Link to={item.url}>{item.name}</Link>
                 </li>
               ))}

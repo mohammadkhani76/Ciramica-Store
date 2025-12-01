@@ -1,11 +1,10 @@
 import { useParams } from "react-router";
 import "./BlogDetails.css";
-import { blogPosts } from "../../../../components/BlogPost/SlideBlogSwiper";
-import { BlogNotFound } from "../BlogNotFound/BlogNotFound";
 import { Loader } from "../../../../components/Loader/Loader";
+import { blogpostData } from "../../../../constants/BlogpostData";
 export const BlogDetails = () => {
   const { id } = useParams();
-  const blog = blogPosts.find((item) => item.id === id);
+  const blog = blogpostData.find((item) => item.id === id);
   if (!blog) return <Loader />;
 
   return (

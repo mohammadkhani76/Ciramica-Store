@@ -10,7 +10,7 @@ export const BasketView = () => {
   const { basket } = useBasketStore();
   const { deleteProduct, addToCart, removeFromCart } = useBasket();
 
-  // بررسی اینکه آیا تمام فروشگاه‌ها خالی هستند
+  // shops are empty
   const isCartEmpty = basket.every((shop) => shop.basket.length === 0);
 
   return (

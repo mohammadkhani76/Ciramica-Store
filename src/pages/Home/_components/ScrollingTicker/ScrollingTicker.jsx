@@ -7,9 +7,6 @@ import brand6 from "./../../../../assets/media/HomeMedia/BrandMedia/6.png";
 import "./ScrollingTicker.css";
 export const ScrollingTicker = () => {
   const images = [brand1, brand2, brand3, brand4, brand5, brand6];
-
-  //   const doubledImages = images.concat(images);
-  //   یا
   const doubledImages = [...images, ...images];
 
   return (

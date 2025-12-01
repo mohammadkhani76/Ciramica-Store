@@ -1,4 +1,5 @@
-import "./../layout.css";
+// import "./../layout.css";
+import "./Footer.css";
 import { FooterTopLeft } from "./_component/FooterTopLeft";
 import { FooterTopCenter } from "./_component/FooterTopCenter";
 import { FooterTopRight } from "./_component/FooterTopRight";

@@ -24,15 +24,23 @@
   padding: 10px;
   width: 60%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 10px;
 }
-.newsletter-item-form label {
+.newsletter-item-form p {
+  color: var(--color-2);
+}
+.newsletter-item-form-lable {
+  display: flex;
+  width: 100%;
+}
+.newsletter-item-form-lable label {
   flex: 1;
   border: none;
 }
-.newsletter-item-form input {
+.newsletter-item-form-lable input {
   padding: 0 15px;
   height: 45px;
   border: none;
@@ -42,7 +50,7 @@
     outline: none;
   }
 }
-.newsletter-item-form button {
+.newsletter-item-form-lable button {
   padding: 0 15px;
   border: none;
   height: 45px;

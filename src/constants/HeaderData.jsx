@@ -3,13 +3,11 @@ import { SvgFavorite } from "../assets/icon/SvgFavorite";
 import { SvgProfile } from "../assets/icon/SvgProfile";
 import { SvgSearch } from "../assets/icon/SvgSearch";
 import productPic from "./../assets/media/HomeMedia/ProductCategoryMedia/cat-1-1.jpg";
-import blogPic from "./../assets/media/HomeMedia/BlogMedia/blog-1.jpg";
-import shipPic from "./../assets/media/HomeMedia/ProductCategoryMedia/cat-2-1.jpg";
 
 export const menuTop = [
   {
     title: "About Us",
-    link: "/",
+    link: "/about-us",
   },
   {
     title: "Blog",
@@ -17,11 +15,11 @@ export const menuTop = [
   },
   {
     title: "Contact Us",
-    link: "/",
+    link: "/contact-us",
   },
   {
     title: "FAQs",
-    link: "/",
+    link: "/faqs",
   },
 ];
 
@@ -33,40 +31,31 @@ export const headerData = [
   {
     title: "Shop",
     link: "/shop",
-    submenu: [
-      {
-        title: "Categories",
-        items: ["Tableware", "Cutlery", "Glassware", "Accessories"],
-      },
-      {
-        title: "Collections",
-        items: ["New Arrivals", "Best Sellers", "Handmade", "Sale"],
-      },
-      {
-        title: "Brands",
-        items: ["Brand A", "Brand B", "Brand C", "Brand D"],
-      },
-      {
-        img: shipPic, // ستون عکس
-      },
-    ],
   },
   {
     title: "Products",
     link: "/product",
     submenu: [
       {
+        shopName: "Home Decor Shop",
         title: "Tableware",
-        items: ["Plates", "Cups", "Bowls"],
+        items: [
+          { name: "Wouter Ligthart Ceramics Dinner Set", id: "2" },
+          { name: "Gray Melamine Dinnerware Sets And Bowls Sets", id: "4" },
+          { name: "Terry Planter Ash–Fego Home Living", id: "12" },
+        ],
       },
       {
+        shopName: "Living Style Shop",
         title: "Collections",
-        items: ["New Arrivals", "Handmade", "Best Sellers"],
+        items: [
+          { name: "White & Black Glaze Cup And Dish Set", id: "8" },
+          { name: "Small Wooden Bowl Set, Dip Sauce", id: "10" },
+          { name: "Traditional Nude Somers Ceramic Vase", id: "11" },
+          { name: "Terry Planter Ash–Fego Home Living", id: "12" },
+        ],
       },
-      {
-        title: "Accessories",
-        items: ["Spoons", "Forks", "Knives"],
-      },
+
       {
         img: productPic,
       },
@@ -75,31 +64,14 @@ export const headerData = [
   {
     title: "Blog",
     link: "/blog",
-    submenu: [
-      {
-        title: "Latest Articles",
-        items: ["Interior Design Tips", "DIY Projects", "Lifestyle Guides"],
-      },
-      {
-        title: "Categories",
-        items: ["Home Decor", "Kitchen", "Reviews", "Trends"],
-      },
-      {
-        title: "Authors",
-        items: ["John Doe", "Jane Smith", "Alex Johnson"],
-      },
-      {
-        img: blogPic,
-      },
-    ],
   },
   {
-    title: "Top deals",
-    link: "/",
+    title: "About Us",
+    link: "/about-us",
   },
   {
-    title: "Elements",
-    link: "/",
+    title: "Contact Us",
+    link: "/contact-us",
   },
 ];
 export const headerDataIcon = [

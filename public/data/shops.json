@@ -2,7 +2,7 @@
   "shops": [
     {
       "shopID": 1,
-      "shopName": "Home Decor",
+      "shopName": "Home Decor Shop",
       "menu": [
         {
           "category": "Tableware",
@@ -109,7 +109,7 @@
     },
     {
       "shopID": 2,
-      "shopName": "Living Style",
+      "shopName": "Living Style Shop",
       "menu": [
         {
           "category": "Drinkware",

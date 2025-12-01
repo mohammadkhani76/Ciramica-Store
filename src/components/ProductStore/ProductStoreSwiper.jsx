@@ -4,7 +4,6 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "./ProductStoreSwiper.css";
 import "./ProductStore.css";
-
 import { FreeMode, Pagination } from "swiper/modules";
 import { Link } from "react-router";
 import { SvgFavorite } from "../../assets/icon/SvgFavorite";
@@ -51,12 +50,12 @@ export const ProductStoreSwiper = ({
         {product.map((item, id) => (
           <SwiperSlide key={id}>
             <div className="store-item">
-              {/* product discount */}
+              {/*  discount */}
               {item.discount && (
-                <div className="store-discount">{item.discount}%</div>
+                <div className="store-discount">{item.discount}</div>
               )}
 
-              {/* product picture */}
+              {/*  picture */}
               <div className="store-item-img-box">
                 <Link to={`/product/${item.id}`}>
                   <img
@@ -135,6 +134,7 @@ export const ProductStoreSwiper = ({
                 >
                   <SvgCart /> <span>Add To Cart</span>
                 </button>
+
                 <button
                   className="store-item-btn-fav"
                   onClick={() => addToFavorite(item)}

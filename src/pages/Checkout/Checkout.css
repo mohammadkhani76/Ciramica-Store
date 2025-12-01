@@ -99,6 +99,9 @@
     color: var(--color-6);
   }
 }
+.form-group p {
+  color: var(--color-2);
+}
 .form-btn {
   display: flex;
   align-items: center;
