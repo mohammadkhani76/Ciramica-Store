@@ -1,5 +1,5 @@
 import { BasketModalOverlay } from "./_component/BasketModalOverlay";
-
+import "./BasketModal.css";
 export const BasketModal = ({
   setshowBasketModal,
   count,

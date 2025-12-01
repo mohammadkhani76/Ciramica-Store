@@ -1,6 +1,6 @@
 import { SvgClose } from "../../../../../../assets/icon/SvgClose";
 import { SvgSearch } from "../../../../../../assets/icon/SvgSearch";
-
+import "./SearchModal.css";
 export const SearchModal = ({ showSearchModal, setShowSearchModal }) => {
   return (
     <div className="search-modal" onClick={() => setShowSearchModal(false)}>
@@ -22,6 +22,7 @@ export const SearchModal = ({ showSearchModal, setShowSearchModal }) => {
             </button>
           </label>
         </form>
+        <div className="serach-modal-result"></div>
       </div>
     </div>
   );
