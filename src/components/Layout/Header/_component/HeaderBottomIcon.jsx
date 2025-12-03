@@ -3,11 +3,10 @@ import { SvgSearch } from "../../../../assets/icon/SvgSearch";
 import { SvgProfile } from "../../../../assets/icon/SvgProfile";
 import { SvgFavorite } from "../../../../assets/icon/SvgFavorite";
 import { SvgCart } from "../../../../assets/icon/SvgCart";
-import { SvgClose } from "../../../../assets/icon/SvgClose";
 import { useMemo, useState } from "react";
 import { useBasket } from "../../../../customHook/useBasket";
-import { SearchModal } from "./_component/search/searchModal";
 import { BasketModal } from "./_component/basket/BasketModal";
+import { SearchModal } from "./_component/search/searchModal";
 
 export const HeaderBottomIcon = ({ isMobile }) => {
   const { basket } = useBasketStore();
