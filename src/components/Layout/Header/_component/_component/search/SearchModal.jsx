@@ -5,7 +5,7 @@ import { useShops } from "../../../../../../customHook/useShops";
 import { useDebounce } from "../../../../../../customHook/useDebounce";
 import { SearchInput } from "./_component/SearchInput";
 import { SearchResults } from "./_component/SearchResults";
-
+//
 export const SearchModal = ({ showSearchModal, setShowSearchModal }) => {
   const [result, setResult] = useState([]);
   const [isResultOpen, setIsResultOpen] = useState(false);
