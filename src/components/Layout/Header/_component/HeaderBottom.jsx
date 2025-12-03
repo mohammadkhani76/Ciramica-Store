@@ -53,6 +53,7 @@ export const HeaderBottom = () => {
             />
             <SvgLogo />
           </div>
+          {/* mobile */}
           {isMobile && isopenMenu && (
             <div className="modal" onClick={() => setIsOpenMenu(false)}>
               <div
@@ -82,6 +83,7 @@ export const HeaderBottom = () => {
             </div>
           )}
 
+          {/* desktop */}
           {!isMobile && (
             <nav className="header-bottom-details-menu">
               <HeaderBottomMenu
