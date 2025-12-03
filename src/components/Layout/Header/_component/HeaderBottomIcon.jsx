@@ -6,7 +6,7 @@ import { SvgCart } from "../../../../assets/icon/SvgCart";
 import { useMemo, useState } from "react";
 import { useBasket } from "../../../../customHook/useBasket";
 import { BasketModal } from "./_component/basket/BasketModal";
-import { SearchModal } from "./_component/search/searchModal";
+import { SearchModal } from "./_component/search/SearchModal/";
 
 export const HeaderBottomIcon = ({ isMobile }) => {
   const { basket } = useBasketStore();
