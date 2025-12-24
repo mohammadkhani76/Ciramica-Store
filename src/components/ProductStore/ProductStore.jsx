@@ -4,9 +4,12 @@ import "./ProductStore.css";
 import { ProductStoreSwiper } from "./ProductStoreSwiper";
 import { useBasket } from "../../customHook/useBasket";
 import { useShops } from "../../customHook/useShops";
+import { useFavorite } from "../../customHook/useFavorite";
 
 export const ProductStore = () => {
   const { addToCart } = useBasket();
+  const { addToFav } = useFavorite();
+
   const { shops, loading, error } = useShops();
   // const [shops, setShops] = useState([]);
 
@@ -39,6 +42,7 @@ export const ProductStore = () => {
                 <ProductStoreSwiper
                   product={category.list}
                   addToCart={addToCart}
+                  addToFav={addToFav}
                   shopID={shop.shopID}
                 />
               </div>

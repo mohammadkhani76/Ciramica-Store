@@ -21,17 +21,27 @@ import { Faqs } from "./pages/Faqs/Faqs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ComingSoon } from "./pages/ComingSoon/ComingSoon";
+import { useFavoriteStore } from "./Store/FavoriteStore";
 function App() {
   const { setBasket } = useBasketStore();
-  const { loadFromLocalStorage } = useLocalStorage("_b");
+  const { setFavorite } = useFavoriteStore();
+
+  const { loadFromLocalStorage: loadBasket } = useLocalStorage("_b");
+  const { loadFromLocalStorage: loadFavorite } = useLocalStorage("_f");
 
   useEffect(() => {
-    const loadData = loadFromLocalStorage();
-    // console.log("loadData", loadData);
-    if (loadData.length > 0) {
-      setBasket(loadData);
+    const basketData = loadBasket() || [];
+    const favoriteData = loadFavorite() || [];
+
+    if (basketData.length > 0) {
+      setBasket(basketData);
+    }
+
+    if (favoriteData.length > 0) {
+      setFavorite(favoriteData);
     }
   }, []);
+
   return (
     <>
       <ToastContainer

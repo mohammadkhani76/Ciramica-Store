@@ -7,12 +7,19 @@ import { useMemo, useState } from "react";
 import { useBasket } from "../../../../customHook/useBasket";
 import { BasketModal } from "./_component/basket/BasketModal";
 import { SearchModal } from "./_component/search/SearchModal/";
+import { useFavoriteStore } from "../../../../Store/FavoriteStore";
+import { FavoriteModal } from "./_component/Favorite/FavoriteModal";
+import { useFavorite } from "../../../../customHook/useFavorite";
 
 export const HeaderBottomIcon = ({ isMobile }) => {
   const { basket } = useBasketStore();
-  const { deleteProduct } = useBasket();
+  const { favorite } = useFavoriteStore();
+  const { deleteProduct, addToCart } = useBasket();
+  const { deleteFav } = useFavorite();
+
   const [showBasketModal, setshowBasketModal] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
+  const [showFavModal, setShowFavModal] = useState(false);
 
   const { count, totalPrice } = useMemo(() => {
     return basket.reduce(
@@ -26,6 +33,10 @@ export const HeaderBottomIcon = ({ isMobile }) => {
       { count: 0, totalPrice: 0 }
     );
   }, [basket]);
+
+  const totalCountFav = useMemo(() => {
+    return favorite.reduce((acc, shop) => acc + shop.favorite.length, 0);
+  }, [favorite]);
 
   return (
     <>
@@ -45,9 +56,9 @@ export const HeaderBottomIcon = ({ isMobile }) => {
           </button>
         </li>
         <li>
-          <button>
+          <button onClick={() => setShowFavModal((prev) => !prev)}>
             <SvgFavorite />
-            <span className="badge">0</span>
+            <span className="badge">{totalCountFav}</span>
           </button>
         </li>
         <li>
@@ -58,6 +69,7 @@ export const HeaderBottomIcon = ({ isMobile }) => {
         </li>
       </ul>
 
+      {/* Basket Modal */}
       {showBasketModal && (
         <BasketModal
           showBasketModal={showBasketModal}
@@ -69,10 +81,23 @@ export const HeaderBottomIcon = ({ isMobile }) => {
         />
       )}
 
+      {/* Search Modal */}
       {showSearchModal && (
         <SearchModal
           showSearchModal={showSearchModal}
           setShowSearchModal={setShowSearchModal}
+        />
+      )}
+
+      {/* fav Modal */}
+      {showFavModal && (
+        <FavoriteModal
+          showFavModal={showFavModal}
+          setShowFavModal={setShowFavModal}
+          totalCountFav={totalCountFav}
+          favorite={favorite}
+          deleteFav={deleteFav}
+          addToCart={addToCart}
         />
       )}
     </>

@@ -9,53 +9,47 @@ import { Link } from "react-router";
 import { SvgFavorite } from "../../assets/icon/SvgFavorite";
 import { SvgCart } from "../../assets/icon/SvgCart";
 import { SvgStar } from "../../assets/icon/SvgStar";
+import { useFavoriteStore } from "../../Store/FavoriteStore";
 
 export const ProductStoreSwiper = ({
   product,
-  addToFavorite,
+  addToFav,
   addToCart,
   shopID,
 }) => {
-  return (
-    <>
-      <Swiper
-        slidesPerView={4}
-        spaceBetween={20}
-        freeMode={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[FreeMode, Pagination]}
-        className="store-swiper"
-        breakpoints={{
-          0: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          480: {
-            slidesPerView: 1,
-            spaceBetween: 15,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
+  const { favorite } = useFavoriteStore();
 
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-          },
-        }}
-      >
-        {product.map((item, id) => (
+  return (
+    <Swiper
+      slidesPerView={4}
+      spaceBetween={20}
+      freeMode={true}
+      pagination={{
+        clickable: true,
+      }}
+      modules={[FreeMode, Pagination]}
+      className="store-swiper"
+      breakpoints={{
+        0: { slidesPerView: 1, spaceBetween: 10 },
+        480: { slidesPerView: 1, spaceBetween: 15 },
+        768: { slidesPerView: 2, spaceBetween: 20 },
+        1024: { slidesPerView: 4, spaceBetween: 20 },
+      }}
+    >
+      {product.map((item, id) => {
+        // بررسی اینکه محصول در علاقه مندی ها هست یا نه
+        const existingShop = favorite.find((shop) => shop.shopID === shopID);
+        const isFavorite = existingShop?.favorite.some((p) => p.id === item.id);
+
+        return (
           <SwiperSlide key={id}>
             <div className="store-item">
-              {/*  discount */}
+              {/* discount */}
               {item.discount && (
                 <div className="store-discount">{item.discount}</div>
               )}
 
-              {/*  picture */}
+              {/* تصویر */}
               <div className="store-item-img-box">
                 <Link to={`/product/${item.id}`}>
                   <img
@@ -72,9 +66,18 @@ export const ProductStoreSwiper = ({
                 <div className="store-icons">
                   <button
                     className="icon-btn"
-                    onClick={() => addToFavorite(item)}
+                    onClick={() =>
+                      addToFav(shopID, {
+                        id: item.id,
+                        title: item.title,
+                        price: item.discountPrice || item.price,
+                        quantity: 1,
+                        image: item.imageFront,
+                        count: 1,
+                      })
+                    }
                   >
-                    <SvgFavorite />
+                    <SvgFavorite className={isFavorite ? "active" : ""} />
                   </button>
                   <button
                     className="icon-btn"
@@ -93,7 +96,7 @@ export const ProductStoreSwiper = ({
                 </div>
               </div>
 
-              {/* product info */}
+              {/* اطلاعات محصول */}
               <div className="store-item-info">
                 <h4>
                   <Link to={`/product/${item.id}`}>{item.title}</Link>
@@ -118,7 +121,7 @@ export const ProductStoreSwiper = ({
                 </p>
               </div>
 
-              {/* buttons */}
+              {/* دکمه های موبایل */}
               <div className="store-item-btn">
                 <button
                   className="store-item-btn-cart"
@@ -137,15 +140,24 @@ export const ProductStoreSwiper = ({
 
                 <button
                   className="store-item-btn-fav"
-                  onClick={() => addToFavorite(item)}
+                  onClick={() =>
+                    addToFav(shopID, {
+                      id: item.id,
+                      title: item.title,
+                      price: item.discountPrice || item.price,
+                      quantity: 1,
+                      image: item.imageFront,
+                      count: 1,
+                    })
+                  }
                 >
-                  <SvgFavorite />
+                  <SvgFavorite className={isFavorite ? "active" : ""} />
                 </button>
               </div>
             </div>
           </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+        );
+      })}
+    </Swiper>
   );
 };

@@ -143,7 +143,9 @@
     fill: var(--color-5);
   }
 }
-
+.active {
+  fill: red !important;
+}
 .icon-btn:hover {
   background-color: var(--color-2);
   & svg {
